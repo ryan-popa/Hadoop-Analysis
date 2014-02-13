@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.HDInsight.Framework</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IRegisteringService">
+            <summary>
+                Allows a service to provide additional registrations when it is registered with the ServiceLocator.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IRegisteringService.Register(Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationRuntimeManager,Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocator)">
+            <summary>
+                Allows a service to provide additional registrations when it is registered with the ServiceLocator.
+            </summary>
+            <param name="manager">
+                The runtime service location manager to use to register additional services.
+            </param>
+            <param name="locator">
+            The service locator to use.
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationSimulationManager">
+            <summary>
+                Provides services to fake out service location during debugging and test scenarios.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationManager">
+            <summary>
+                Locates services that ViewModels need.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationManager.RegisterInstance``1(``0)">
+            <summary>
+                Registers a new instance with of a service with the container.
+            </summary>
+            <typeparam name="TService">
+                The type to register.
+            </typeparam>
+            <param name="instance">
+                The instance to register.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationManager.RegisterInstance(System.Type,System.Object)">
+            <summary>
+                Registers a new instance with of a service with the container.
+            </summary>
+            <param name="type">
+                The type to register.
+            </param>
+            <param name="instance">
+                The instance to register.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationManager.RegisterType``1(System.Type)">
+            <summary>
+                Register type.
+            </summary>
+            <typeparam name="T">Type to map.</typeparam>
+            <param name="type">Type to map to.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationManager.RegisterType``2">
+            <summary>
+                Register type.
+            </summary>
+            <typeparam name="TInterface">The service interface.</typeparam>
+            <typeparam  name="TConcretion">The implementation type.</typeparam>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationManager.RegisterType(System.Type,System.Type)">
+            <summary>
+                Register type.
+            </summary>
+            <param name="type">Type to map.</param>
+            <param name="registrationValue">Type to map to.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationSimulationManager.MockingLevel">
+            <summary>
+            Gets or sets the mocking level to use when performing service location.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationRuntimeManager">
+            <summary>
+                Provides services to provide additional service locations for the runtime.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationIndividualTestManager">
+            <summary>
+                Provides services to override a service location for a single test.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationIndividualTestManager.Override``1(``0)">
+            <summary>
+                Override default interface-to-implementation association.
+            </summary>
+            <typeparam name="T"> Interface to override. </typeparam>
+            <param name="overrideValue"> Value to override with. </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationIndividualTestManager.Override(System.Type,System.Object)">
+            <summary>
+                Override default interface-to-implementation association.
+            </summary>
+            <param name="type"> Interface to override. </param>
+            <param name="overrideValue"> Value to override with. </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationIndividualTestManager.Reset">
+            <summary>
+                Resets the overrides.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocator">
+            <summary>
+                Locates services that ViewModels need.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocator.Locate``1">
+            <summary>
+                Locates an instance that implements the specified interface.
+            </summary>
+            <typeparam name="T"> Interface to locate. </typeparam>
+            <returns> Instance of the interface. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocator.Locate(System.Type)">
+            <summary>
+                Locates an instance that implements the specified interface.
+            </summary>
+            <param name="type"> Interface to locate. </param>
+            <returns> Instance of the interface. </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator">
+            <summary>
+                The main service locator for any application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.#ctor">
+            <summary>
+                Prevents a default instance of the ServiceLocator class from being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.Locate``1">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.Locate(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.Instance">
+            <summary>
+                Gets the singleton instance of the ServiceLocator.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationManager.RegisterInstance``1(``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationManager.RegisterInstance(System.Type,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationManager.RegisterType``1(System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationManager.RegisterType``2">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationManager.RegisterType(System.Type,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationRuntimeManager.RegisterInstance(System.Type,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocator.ServiceLocationSimulationManager.RegisterInstance(System.Type,System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocationMockingLevel">
+            <summary>
+            Test Mocking Levels, which control how the service locator should work in 
+            a test environment.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocationMockingLevel.ApplyFullMocking">
+            <summary>
+            Apply Full Mocking, All mocking levels should be respected.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocationMockingLevel.ApplyIndividualTestMockingOnly">
+            <summary>
+            Apply Individual Test Mocking only.  Only individual test overrides
+            should be respected.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocationMockingLevel.ApplyTestRunMockingOnly">
+            <summary>
+            Apply Test Run Mocking Only.  Only full test run overrides should 
+            be respected.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.ServiceLocationMockingLevel.ApplyNoMocking">
+            <summary>
+            Apply No Mocking.  No mocking should be respected and only runtime
+            objects should be utilized.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationRegistrar">
+            <summary>
+            Allows an assembly to register services with the IoC container.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.FrameworkServiceLocationRegistrar">
+            <summary>
+            Registers services with the IOC for use by this assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.FrameworkServiceLocationRegistrar.Register(Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationRuntimeManager,Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocator)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

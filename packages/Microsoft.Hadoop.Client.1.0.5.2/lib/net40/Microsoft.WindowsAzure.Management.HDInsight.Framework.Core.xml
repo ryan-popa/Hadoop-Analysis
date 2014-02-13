@@ -1,0 +1,2762 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.HDInsight.Framework.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext">
+            <summary>
+            Abstraction context that containst context to be passed into the internal abstractions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject">
+            <summary>
+               Base implementation of a disposable object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.IQueryDisposable">
+            <summary>
+               Extends <see cref="T:System.IDisposable"/> to expose the status.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.IQueryDisposable.IsDisposed">
+            <summary>
+               Determines whether this instance is disposed.
+            </summary>
+            <returns> <c>true</c> if this instance is disposed; otherwise, <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.Dispose">
+            <summary>
+               Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.Dispose(System.Boolean)">
+            <summary>
+               Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"> Use <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources. </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.Finalize">
+            <summary>
+               Finalizes an instance of the <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject"/> class.
+            </summary>
+            <remarks>
+               Releases unmanaged resources and performs other cleanup operations before the
+               <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject"/> is reclaimed by garbage collection.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.ReleaseManagedResources">
+            <summary>
+               Releases the managed resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.ReleaseUnmanagedResources">
+            <summary>
+               Releases the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.DisposableObject.CheckDisposed">
+            <summary>
+               Checks the disposed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext">
+            <summary>
+            Provides an abstraction context over web requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext.CancellationToken">
+            <summary>
+            Gets a cancellation token to cancel any running requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext.Logger">
+            <summary>
+            Gets a logger to write log messages to.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext.#ctor(System.Threading.CancellationTokenSource,Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogger)">
+            <summary>
+            Initializes a new instance of the AbstractionContext class.
+            </summary>
+            <param name="tokenSource">A Cancellation token source.</param>
+            <param name="logger">A logger instance.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext.#ctor(System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the AbstractionContext class.
+            </summary>
+            <param name="token">A Cancellation token.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext.#ctor(Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Initializes a new instance of the AbstractionContext class.
+            </summary>
+            <param name="original">An abstraction context to clone.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext.CancellationToken">
+            <summary>
+            Gets a cancellation token to cancel any running requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext.CancellationTokenSource">
+            <summary>
+            Gets a source to generate cancellation token to cancel any running requests.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.AbstractionContext.Logger">
+            <summary>
+            Gets a logger to write log messages to.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ExceptionExtensions">
+            <summary>
+            Provides a set of extension over the Exception class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ExceptionExtensions.GetFirstException(System.Exception)">
+            <summary>
+            Gets the first usable exception for this exception.
+            This method undoes Target Invoke, Aggregate Exception and
+            Task Canceled Exceptions.
+            </summary>
+            <param name="ex">
+            The exception to be converted.
+            </param>
+            <returns>
+            The first "non wrapping" exception that can be found based 
+            on unwrapping rules.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ExceptionExtensions.Rethrow(System.Exception)">
+            <summary>
+            Rethrows an exception based on unwrapping rules.
+            </summary>
+            <param name="ex">
+            The exception to rethrow.
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean">
+            <summary>
+               An interlocked Boolean.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.#ctor(System.Boolean)">
+            <summary>
+               Initializes a new instance of the <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean"/> struct.
+            </summary>
+            <param name="value"> The initial value of the instance. </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.CompareTo(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.CompareTo(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.Equals(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.Equals(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <returns> <c>true</c> if the current object is equal to the <paramref name="other" /> parameter; otherwise, <c>false</c> . </returns>
+            <param name="other"> An object to compare with this object. </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.Equals(System.Object)">
+            <summary>
+               Determines whether the specified <see cref="T:System.Object"/> is equal to this instance.
+            </summary>
+            <param name="obj"> The <see cref="T:System.Object"/> to compare with this instance. </param>
+            <returns> <c>true</c> if the specified <see cref="T:System.Object"/> is equal to this instance; otherwise, <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.ExchangeValue(System.Boolean)">
+            <summary>
+               Exchanges the value.
+            </summary>
+            <param name="newValue"> The value to which the instance is set. </param>
+            <returns> The original value. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.GetHashCode">
+            <summary>
+               Returns a hash code for this instance.
+            </summary>
+            <returns> A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.GetValue">
+            <summary>
+               Gets the value.
+            </summary>
+            <returns> The current value. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.SetValue(System.Boolean)">
+            <summary>
+               Sets the value.
+            </summary>
+            <param name="newValue"> The value to which the instance is set. </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.ToString">
+            <summary>
+               Returns a <see cref="T:System.String"/> that represents this instance.
+            </summary>
+            <returns> A <see cref="T:System.String"/> that represents this instance. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.System#IComparable#CompareTo(System.Object)">
+            <summary>
+               Compares the current instance with another object of the same type and returns an integer that indicates whether the current instance precedes, follows, or occurs in the same position in the sort order as the other object.
+            </summary>
+            <param name="obj"> An object to compare with this instance. </param>
+            <returns> A value that indicates the relative order of the objects being compared. The return value has these meanings: Value Meaning Less than zero This instance is less than <paramref name="obj"/> . Zero This instance is equal to <paramref name="obj"/> . Greater than zero This instance is greater than <paramref name="obj"/> . </returns>
+            <exception cref="T:System.ArgumentException">The parameter "obj" is not the same type as this instance.</exception>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Equality(System.Boolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Equality operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the instances are equal, otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Equality(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,System.Boolean)">
+            <summary>
+               Equality operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the instances are equal, otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Equality(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Equality operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the instances are equal, otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_GreaterThan(System.Boolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Greater-than operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is greater-than <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_GreaterThan(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,System.Boolean)">
+            <summary>
+               Greater-than operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is greater-than <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_GreaterThan(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Greater-than operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is greater-than <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_GreaterThanOrEqual(System.Boolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Greater-than-or-equal-to operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is Greater-than-or-equal-to <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_GreaterThanOrEqual(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,System.Boolean)">
+            <summary>
+               Greater-than-or-equal-to operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is Greater-than-or-equal-to <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_GreaterThanOrEqual(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Greater-than-or-equal-to operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is Greater-than-or-equal-to <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Implicit(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)~System.Boolean">
+            <summary>
+               Performs an implicit conversion from <see cref="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean"/> to <see cref="T:System.Boolean"/>.
+            </summary>
+            <param name="value"> The value. </param>
+            <returns> The result of the conversion. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Inequality(System.Boolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Inequality operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the instances are not equal, otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Inequality(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,System.Boolean)">
+            <summary>
+               Inequality operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the instances are not equal, otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_Inequality(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Inequality operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the instances are not equal, otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_LessThan(System.Boolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Less-than operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is less-than <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_LessThan(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,System.Boolean)">
+            <summary>
+               Less-than operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is less-than <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_LessThan(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Less-than operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is less-than <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_LessThanOrEqual(System.Boolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Less-than-or-equal-to operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is Less-than-or-equal-to <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_LessThanOrEqual(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,System.Boolean)">
+            <summary>
+               Less-than-or-equal-to operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is Less-than-or-equal-to <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean.op_LessThanOrEqual(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.InterlockedBoolean)">
+            <summary>
+               Less-than-or-equal-to operator overload.
+            </summary>
+            <param name="left"> The left value. </param>
+            <param name="right"> The right value. </param>
+            <returns> <c>true</c> when the <paramref name="left" /> is Less-than-or-equal-to <paramref name="right" /> , otherwise <c>false</c> . </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.CollectionExtensions">
+            <summary>
+            Adds Extension methods to the ICollection(of T) objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.CollectionExtensions.AddRange``1(System.Collections.Generic.ICollection{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Allows a range of objects IEnumerable(of T) to be added to the collection.
+            </summary>
+            <typeparam name="T">
+            The Type of objects in the collection.
+            </typeparam>
+            <param name="collection">
+            The collection that this extension method is extending.
+            </param>
+            <param name="items">
+            The IEnumerable(of T) of objects in the collection.
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceMapping">
+            <summary>
+            Represents a mapping of a namespace prefix to its namespace uri.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceMapping.#ctor(System.String,System.String)">
+            <summary>
+               Initializes a new instance of the DynaXmlNamespaceMapping class.
+            </summary>
+            <param name="prefix">The prefix.</param>
+            <param name="xmlNamespace">The URI.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceMapping.XmlNamespace">
+            <summary>
+            Gets the xmlNamespace for this mapping.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceMapping.Prefix">
+            <summary>
+            Gets the prefix for this mapping.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable">
+            <summary>
+            Provides a namespace manager for an xml document that recognized the namespaces
+            that have been defined within that document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable.#ctor(System.Xml.XPath.IXPathNavigable)">
+            <summary>
+            Initializes a new instance of the DynaXmlNamespaceTable class.
+            </summary>
+            <param name="document">
+            The document for which namespace mappings are required.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable.GetNamespaceForPrefix(System.String)">
+            <summary>
+            Returns the namespaceUri for a given prefix.
+            </summary>
+            <param name="prefix">The prefix for which to return the xmlNamespaceUri.</param>
+            <returns>The xmlNamespace for this prefix.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable.GetPrefixesForNamespace(System.String)">
+            <summary>
+            Returns the set of prefixes for a given namespaceUri.
+            </summary>
+            <param name="xmlNamespace">The xmlNamespaceUri for which to return the prefixes.</param>
+            <returns>The prefixes defined for this xmlNamespaceUri.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable.NamespaceManager">
+            <summary>
+            Gets the namespace manager for the xml document supplied.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable.Mappings">
+            <summary>
+            Gets the set of DynaXmlNamespaceMappings defined by the supplied document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Reader.DynaXmlNamespaceTable.Item(System.String)">
+            <summary>
+            Indexer that returns the xmlNamespace for a give prefix.
+            </summary>
+            <param name="prefix">The prefix for which to return the xmlNamespaceUri.</param>
+            <returns>The xmlNamespace for this prefix.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder">
+            <summary>
+            Used to build an Xml Document dynamically.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlDocument,System.Boolean,System.Xml.Formatting)">
+            <summary>
+            Initializes a new instance of the DynaXmlBuilder class.
+            </summary>
+            <param name="document">
+            The XmlDocument to use for building.
+            </param>
+            <param name="includeHeader">
+            A flag indicating that a header should be included.
+            </param>
+            <param name="xmlFormatting">
+            The XmlFormatting style to use when writing the document.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.Create(System.Boolean,System.Xml.Formatting)">
+            <summary>
+            Creates a new instance of the DynaXmlBuilder class.
+            This override allows the user to specify if a header should or should not be added.
+            </summary>
+            <param name="includeHeader">
+            Specifies if a header (&lt;?xml ... &gt;) should be included.
+            </param>
+            <param name="xmlFormatting">
+            The XmlFormatting style to use when writing the document.
+            </param>
+            <returns>
+            A new DynaXmlBuilder object that can be used to build Xml.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.Create">
+            <summary>
+            Creates a new instance of the DynaXmlBuilder class.
+            This override will force the creation of an xml header.
+            </summary>
+            <returns>
+            A new DynaXmlBuilder object that can be used to build Xml.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CreateElement(System.String)">
+            <summary>
+            Creates a new element in the XmlDocument.
+            </summary>
+            <param name="name">
+            The name of the element.
+            </param>
+            <returns>
+            The XmlElement that was created.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.AttributeBuilderGetMember(System.String)">
+            <summary>
+            Used to manage members applied when in the Attribute state.
+            </summary>
+            <param name="name">
+            The binder for the dynamic method get.
+            </param>
+            <returns>
+            True if the operation is successful; otherwise, false. 
+            If this method returns false, the run-time binder of the language determines the behavior
+            (In most cases, a run-time exception is thrown).
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.NamespaceBuilderGetMember(System.String)">
+            <summary>
+            Changes the current namespace alias for the current context.
+            </summary>
+            <param name="name">
+            The alias for the new namespace.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.NamespaceBuilderInvokeMember(System.String,System.String)">
+            <summary>
+            Changes the current namespace alias for the current context.
+            </summary>
+            <param name="name">
+            The alias for the new namespace.
+            </param>
+            <param name="xmlNamespace">
+            The namespace Url to apply.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.ElementBuilderGetMember(System.String)">
+            <summary>
+            Used to manage the creation of Elements against the a child element within the Xml document.
+            </summary>
+            <param name="name">
+            The name of the member.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.Save(System.String)">
+            <summary>
+            Saves the Xml to a given file.
+            </summary>
+            <param name="fileName">
+            The name of the file to save to.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.Save(System.IO.Stream)">
+            <summary>
+            Saves the Xml to a given stream.
+            </summary>
+            <param name="stream">
+            The stream to save to.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CreateAttribute(System.String,System.String)">
+            <summary>
+            Creates an Xml Attribute.
+            </summary>
+            <param name="name">
+            The name of the attribute.
+            </param>
+            <param name="value">
+            The value of the attribute.
+            </param>
+            <returns>
+            The new attribute.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CreateNamespace(System.String,System.String)">
+            <summary>
+            Creates a new XmlNamespace element.
+            </summary>
+            <param name="prefix">The prefix for the namespace.</param>
+            <param name="xmlNamespace">The namespace.</param>
+            <returns>A new XmlAttribute representing the namespace.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.SetDefaultNamespace(System.String)">
+            <summary>
+            Changes the default namespace to apply to all newly created elements.
+            </summary>
+            <param name="xmlNamespace">
+            The new xml namespace.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <inheritdoc />
+            This method handles property gets.
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.TryInvokeMember(System.Dynamic.InvokeMemberBinder,System.Object[],System.Object@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.ElementBuilderInvokeMember(System.String,System.String)">
+            <summary>
+            Adds an element with content to the tree.
+            </summary>
+            <param name="name">
+            The name of the element to add.
+            </param>
+            <param name="value">
+            The value to place as the text of the element.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.AttributeBuilderInvokeMember(System.String,System.String)">
+            <summary>
+            Creates an Attribute as a component of the current element.
+            </summary>
+            <param name="name">
+            The name of the attribute.
+            </param>
+            <param name="value">
+            The value for the attribute.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CDataInvokeMember(System.String)">
+            <summary>
+            Creates a CDATA block with the text supplied.
+            </summary>
+            <param name="content">
+            The content to place in the CDATA block.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.TextInvokeMember(System.String)">
+            <summary>
+            Creates a Text block with the text supplied.
+            </summary>
+            <param name="content">
+            The content to place in the CDATA block.
+            </param>
+            <returns>
+            Always true.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.State">
+            <summary>
+            Gets the current State of the building context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CurrentAncestorElement">
+            <summary>
+            Gets the current ancestor XmlNode for the builder.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CurrentAncestorNode">
+            <summary>
+            Gets the current ancestor as an XmlNode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.LastCreated">
+            <summary>
+            Sets the last element that was created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.CurrentNamespaceContext">
+            <summary>
+            Gets the current DynaXmlNamespaceContext.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.IsElementState">
+            <summary>
+            Gets a value indicating whether we are in a sate of processing an element.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilder.IsLiteratState">
+            <summary>
+            Gets a value indicating whether we are in a state of processing a literal.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext">
+            <summary>
+                Provides the current context tracking for Dynamic Xml building.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.#ctor">
+            <summary>
+                Initializes a new instance of the DynaXmlBuilderContext class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext)">
+            <summary>
+                Initializes a new instance of the DynaXmlBuilderContext class.
+            </summary>
+            <param name="original">Original context.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.Pop">
+            <summary>
+                Pops to the previous state in the stack.
+            </summary>
+            <returns>The Content state for the previous state in the stack.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.PushElement(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlElement)">
+            <summary>
+                Pushes a new state into the stack (thus changing the current state to the new state).
+            </summary>
+            <param name="element">
+                The XmlELement representing the current state.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.PushState(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState)">
+            <summary>
+                Pushes a new state into the stack.  This allows a change of building type without altering the current node being built.
+            </summary>
+            <param name="state">
+                The new state of the builder.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.Push(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlElement,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState)">
+            <summary>
+                Pushes a new state into the stack (thus changing the current state to the new state).
+                This method allows for both a new node and a new state to be supplied.
+            </summary>
+            <param name="newAncestor">
+                The new XmlNode representing the ancestor for all new nodes.
+            </param>
+            <param name="state">
+                The new state.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.ChangeState(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState)">
+            <summary>
+            Changes the BuilderState for the current context.
+            </summary>
+            <param name="state">
+            The new state to enter.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.Push(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlDocument,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState)">
+            <summary>
+                Pushes an initial document onto the stack.
+            </summary>
+            <param name="document">
+                The XmlDocument object representing the document for building.
+            </param>
+            <param name="state">
+                The new state.
+            </param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.State">
+            <summary>
+                Gets the builder state represented by this object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.CurrentAncestorElement">
+            <summary>
+            Gets the last Element Node created (ancestor of self).
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.CurrentAncestorNode">
+            <summary>
+            Gets the current ancestor node.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.LastCreated">
+            <summary>
+            Gets or sets the last element created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.CurrentNamespaceContext">
+            <summary>
+            Gets or sets the current namespace context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderContext.Document">
+            <summary>
+            Gets the XmlDocument.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState">
+            <summary>
+                Provides an enumeration that describes what state the builder is in.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState.ElementListBuilder">
+            <summary>
+                The builder is working on building a list of child elements.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState.LiteralElementBuilder">
+            <summary>
+            The next input should be interpreted as a literal element.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState.NamespaceBuilder">
+            <summary>
+                The builder is working on building a namespace node.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState.AttributeBuilder">
+            <summary>
+                The builder is working on building an attribute node.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState.AttributeListBuilder">
+            <summary>
+            The builder is working on a list of attributes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState.LiteralAttributeBuilder">
+            <summary>
+            The next input should be interpreted as a literal attribute.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState">
+            <summary>
+                Used to track a current context state within the builder system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlDocument,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlElement,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.Model.DynaXmlElement,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlBuilderState)">
+            <summary>
+                Initializes a new instance of the DynaXmlContextState class.
+            </summary>
+            <param name="document">The xml document.</param>
+            <param name="currentAncestor">The current ancestor of all new nodes.</param>
+            <param name="lastCreated">The last node that was created.</param>
+            <param name="namespaceContext">The current namespace context.</param>
+            <param name="state">The current state of the state machine.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState.Document">
+            <summary>
+            Gets the XmlDocument current being worked on.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState.CurentAncestorElement">
+            <summary>
+            Gets the last XmlElement (ancestor of self) created.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState.CurrentNamespaceContext">
+            <summary>
+            Gets or sets the current namespace context.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState.LastCreated">
+            <summary>
+            Gets or sets the last element created (even if it isn't currently the ancestor).
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlContextState.State">
+            <summary>
+            Gets or sets the dynamic xml builder state (the type of things being built) represented by this state.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext)">
+            <summary>
+            Initializes a new instance of the DynaXmlNamespaceContext class.
+            </summary>
+            <param name="orignal">
+            An existing namespace context that should be cloned.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext.#ctor">
+            <summary>
+            Initializes a new instance of the DynaXmlNamespaceContext class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext.DefaultNamespace">
+            <summary>
+            Gets or sets the default namespace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext.CurrentAlias">
+            <summary>
+            Gets or sets the current alias.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext.ApplyCurrentToAttributes">
+            <summary>
+            Gets or sets a value indicating whether the current alias should be applied to attributes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.DynamicXml.Writer.DynaXmlNamespaceContext.AliasTable">
+            <summary>
+            Gets the current namespace table (organized by alias).
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Help">
+            <summary>
+            Helper class to provide some useful functions.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Help.DoNothing(System.Object[])">
+            <summary>
+            Performs No Action (used to make use of unused, until they are used).
+            </summary>
+            <param name="inputs">
+            The inputs to the function.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Help.SafeCreate``1">
+            <summary>
+            Safely creates a disposable object with a default constructor.
+            </summary>
+            <typeparam name="T">
+            The type of object to create.
+            </typeparam>
+            <returns>
+            The disposable object that has been safely created.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Help.SafeCreate``1(System.Func{``0})">
+            <summary>
+            Safely creates a disposable object with a custom constructor.
+            </summary>
+            <typeparam name="T">
+            The type of object to create.
+            </typeparam>
+            <param name="factory">
+            The factory method used to construct the object.
+            </param>
+            <returns>
+            The disposable object that has been safely created.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray">
+            <summary>
+            Represents a Json array object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem">
+            <summary>
+            Represents a base JsonItem, all Json parts are derrived from this class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.GetProperty(System.String)">
+            <summary>
+            Returns a property of a Json class if avalalbe.
+            Other implementations will simply return JsonMissing.
+            </summary>
+            <param name="name">
+            The name of the property.
+            </param>
+            <returns>
+            The JsonItem associated with the property if the implementation
+            is a class and the property exists, otherwise JsonMissing.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.GetIndex(System.Int32)">
+            <summary>
+            Returns the offset into an array index if the implementation
+            is a JsonArray.  Other implementations return JsonMissing.
+            </summary>
+            <param name="index">
+            The index into the array.
+            </param>
+            <returns>
+            The JsonItem associated with that index or JsonMissing if this
+            is not an array or the array is out of bounds.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.Count">
+            <summary>
+            Gets the number of items in the array.
+            </summary>
+            <returns>The number of items in the array.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.TryGetValue(System.Boolean@)">
+            <summary>
+            Tries to get the underlying value of a property as a 
+            Boolean type.
+            </summary>
+            <param name="asBool">
+            The value to set.
+            </param>
+            <returns>
+            True if the method succeeded, otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.TryGetValue(System.Int64@)">
+            <summary>
+            Tries to get the underlying value of a property as a 
+            long integer type.
+            </summary>
+            <param name="asLong">
+            The value to set.
+            </param>
+            <returns>
+            True if the method succeeded, otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.TryGetValue(System.Double@)">
+            <summary>
+            Tries to get the underlying value of a property as a 
+            double precision floating point type.
+            </summary>
+            <param name="asDouble">
+            The value to set.
+            </param>
+            <returns>
+            True if the method succeeded, otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.TryGetValue(System.String@)">
+            <summary>
+            Tries to get the underlying value of a property as a 
+            string.
+            </summary>
+            <param name="asString">
+            The value to set.
+            </param>
+            <returns>
+            True if the method succeeded, otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.JsonEncodeString(System.String)">
+            <summary>
+            Encodes a string for json consumption.
+            </summary>
+            <param name="input">
+            The input string.
+            </param>
+            <returns>
+            A string encoded for Json.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.ToString">
+            <summary>
+            Returns the Json representation of this item.
+            </summary>
+            <returns>
+            Json content string representing the item.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsError">
+            <summary>
+            Gets a value indicating whether this object represents a parser error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsBoolean">
+            <summary>
+            Gets a value indicating whether this property is a Boolean.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsArray">
+            <summary>
+            Gets a value indicating whether this property is an array.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsObject">
+            <summary>
+            Gets a value indicating whether this property is an object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsInteger">
+            <summary>
+            Gets a value indicating whether this property is an integer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsFloat">
+            <summary>
+            Gets a value indicating whether this property is a float.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsNumber">
+            <summary>
+            Gets a value indicating whether this property is a number (either float or integer).
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsString">
+            <summary>
+            Gets a value indicating whether this property is a string.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsMissing">
+            <summary>
+            Gets a value indicating whether this property was missing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsNull">
+            <summary>
+            Gets a value indicating whether this property is null.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsEmpty">
+            <summary>
+            Gets a value indicating whether property is empty (either empty string or empty array).
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsNullOrMissing">
+            <summary>
+            Gets a value indicating whether property is either null or missing.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem.IsNullMissingOrEmpty">
+            <summary>
+            Gets a value indicating whether property is null, missing or empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.GetIndex(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.Count">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.#ctor(System.Collections.Generic.IEnumerable{Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem})">
+            <summary>
+            Initializes a new instance of the JsonArray class.
+            </summary>
+            <param name="data">
+            The set of items that constitute the array.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.IsArray">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.IsNull">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonArray.IsEmpty">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonBoolean">
+            <summary>
+            Represents a Boolean value in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonBoolean.TryGetValue(System.Boolean@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonBoolean.TryGetValue(System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonBoolean.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the JsonBoolean class.
+            </summary>
+            <param name="data">
+            The value of the Boolean.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonBoolean.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonBoolean.IsBoolean">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonFloat">
+            <summary>
+            Represents a floating point value in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonFloat.TryGetValue(System.Double@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonFloat.TryGetValue(System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonFloat.#ctor(System.Double)">
+            <summary>
+            Initializes a new instance of the JsonFloat class.
+            </summary>
+            <param name="data">
+            The floating point value of the item.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonFloat.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonFloat.IsFloat">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonInteger">
+            <summary>
+            Represents an Integer value in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonInteger.TryGetValue(System.Int64@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonInteger.TryGetValue(System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonInteger.#ctor(System.Int64)">
+            <summary>
+            Initializes a new instance of the JsonInteger class.
+            </summary>
+            <param name="data">
+            The integer value for the json item.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonInteger.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonInteger.IsInteger">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonMissing">
+            <summary>
+            Represents a missing property or array index in Json.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonMissing.Singleton">
+            <summary>
+            Gets the single instance of a JsonMissing object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonMissing.IsMissing">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonNull">
+            <summary>
+            Represents as null value in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonNull.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonNull.Singleton">
+            <summary>
+            Gets the single standard instance of a JsonNull.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonNull.IsNull">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject">
+            <summary>
+            Represents an object (class) in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.GetProperty(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.#ctor(System.Collections.Generic.IDictionary{System.String,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonItem})">
+            <summary>
+            Initializes a new instance of the JsonObject class.
+            </summary>
+            <param name="data">
+            The property bag that represents the object.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.Properties">
+            <summary>
+            Gets the properties of this object.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.IsObject">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.IsNull">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonObject.IsMissing">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType">
+            <summary>
+            The various types of items that the Json parser can parse.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.JsonStream">
+            <summary>
+            The start of a json stream.  Content should either be an object or an array.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.Object">
+            <summary>
+            A Json object.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.Array">
+            <summary>
+            A Json Array.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.Number">
+            <summary>
+            A Json number.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.String">
+            <summary>
+            A Json string.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.Boolean">
+            <summary>
+            A Json Boolean value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.Null">
+            <summary>
+            A Json null value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType.Value">
+            <summary>
+            A Json value (could be any of the above except JsonStream).
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError">
+            <summary>
+            Represents a parsing error coming out of the Json Parser.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType,System.Int32,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the JsonParseError class.
+            </summary>
+            <param name="type">
+            The type of item that was attempting to be parsed.
+            </param>
+            <param name="typeStart">
+            The starting location for the type of item that was being parsed.
+            </param>
+            <param name="errorLocation">
+            The location where the error occurred.
+            </param>
+            <param name="message">
+            The message that describes the error.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.IsError">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.ParseType">
+            <summary>
+            Gets or sets the type of item that was being parsed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.ParseTypeStart">
+            <summary>
+            Gets or sets the location where the item being parsed started.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.ParseErrorLocation">
+            <summary>
+            Gets or sets the location where the error occurred.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseError.Message">
+            <summary>
+            Gets or sets the message representing the error.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser">
+            <summary>
+            Represents a JsonParser.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase">
+            <summary>
+            Base class for Json parsers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.DisposeBuffer">
+            <summary>
+            Disposes of the internal buffer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonParserBase class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.Consume(System.Char[])">
+            <summary>
+            Consumes the next character off of the stream if it matches one of the
+            expected characters (otherwise the character stays on the stream).
+            </summary>
+            <param name="expects">
+            The set of expected characters.
+            </param>
+            <returns>
+            True if the next character was one of the expected and was consumed, otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.Pop">
+            <summary>
+            Removes the next character off the stream.
+            </summary>
+            <returns>
+            true if there was a character to remove.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.Peek(System.Char[])">
+            <summary>
+            Peeks the next character but keeps it on the stream.
+            </summary>
+            <param name="expects">
+            The set of expected characters.
+            </param>
+            <returns>
+            True if the next character was one of the expected.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.MakeError(System.Char[])">
+            <summary>
+            Creates a parser error specifying that one of the set of characters were expected but a different character was found.
+            </summary>
+            <param name="expected">
+            The set of the next characters that were expected but not found.
+            </param>
+            <returns>
+            A parser error.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.MakeError(System.Char[],System.Char[])">
+            <summary>
+            Creates a parser error specifying that one of the two sets of characters were expected but a different character was found.
+            </summary>
+            <param name="baseExpected">
+            The set of the next characters that were expected but not found.
+            </param>
+            <param name="additionalExpected">
+            An additional set of expected values.
+            </param>
+            <returns>
+            A parser error.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.MakeEosError(System.Char[])">
+            <summary>
+            Creates a parser error specifying that one of the set of characters were expected but the end of stream was found.
+            </summary>
+            <param name="expected">
+            The set of the next characters that were expected but not found.
+            </param>
+            <returns>
+            A parser error.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.MakeEosError(System.Char[],System.Char[])">
+            <summary>
+            Creates a parser error specifying that one of the two sets of characters were expected but the end of stream was found.
+            </summary>
+            <param name="baseExpected">
+            The set of the next characters that were expected but not found.
+            </param>
+            <param name="additionalExpected">
+            An additional set of expected values.
+            </param>
+            <returns>
+            A parser error.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.MakeError(System.String)">
+            <summary>
+            Creates a parser error allowing the caller to provide the nature of the error.
+            </summary>
+            <param name="message">
+            A message that describes the nature of the error.
+            </param>
+            <returns>
+            A parser error.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.Buffer">
+            <summary>
+            Gets the parser buffer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.OutChar">
+            <summary>
+            Gets the character that was most recently parsed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.ParseType">
+            <summary>
+            Gets the type of JsonItem currently being parsed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonParserBase.EndOfStream">
+            <summary>
+            Gets a value indicating whether the buffer has reached the end of the stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.IJsonParser">
+            <summary>
+            The internal interface for the Json parser and it's various associate parsers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.IJsonParser.ParseNext">
+            <summary>
+            Consumes the next JsonItem in the stream and returns it.
+            </summary>
+            <returns>
+            The next item in the stream or a parse error if no item could be parsed.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the JsonParser class.
+            </summary>
+            <param name="json">
+            A string containing the Json content to parse.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the JsonParser class.
+            </summary>
+            <param name="jsonStream">
+            A stream containing the Json content to parse.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the JsonParser class.
+            </summary>
+            <param name="jsonStream">
+            A string containing the Json content to parse.
+            </param>
+            <param name="encoding">
+            The encoding used for the stream.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.Dispose(System.Boolean)">
+            <summary>
+            Used to indicate how to dispose of the object.
+            </summary>
+            <param name="disposing">
+            If true dispose of managed objects.  Always dispose
+            of unmanaged objects.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.IsDisposed">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString">
+            <summary>
+            Represents a string in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString.TryGetValue(System.String@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the JsonString class.
+            </summary>
+            <param name="input">
+            The string representing the item.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString.ToString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString.IsString">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString.IsNull">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonString.IsEmpty">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonArrayParser">
+            <summary>
+            Parses a Json Array.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonArrayParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonArrayParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonArrayParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonArrayParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonBooleanParser">
+            <summary>
+            Parses a Boolean value in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonBooleanParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonBooleanParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonBooleanParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonBooleanParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNullParser">
+            <summary>
+            Parses the null keyword in Json.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNullParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonNullParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNullParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNullParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNumberParser">
+            <summary>
+            Used to parse a Json Number.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNumberParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonNumberParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNumberParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonNumberParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonObjectParser">
+            <summary>
+            Parses a Json object (class).
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonObjectParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonObjectParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonObjectParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonObjectParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonStringParser">
+            <summary>
+            Parses a Json String.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonStringParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonStringParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonStringParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonStringParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonValueParser">
+            <summary>
+            Parses a Json Value.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonValueParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonValueParser class.
+            </summary>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonValueParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonValueParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonWhiteSpaceParser">
+            <summary>
+            Used to parse Json Whitespace.  This consumes all irrelevant white space 
+            until the next valid character.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonWhiteSpaceParser.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.JsonParseType,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer)">
+            <summary>
+            Initializes a new instance of the JsonWhiteSpaceParser class.
+            </summary>
+            <param name="parseType">
+            The type of object that was being parsed.
+            </param>
+            <param name="buffer">
+            The parser buffer used to conduct parsing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonWhiteSpaceParser.ParseNext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.Json.Parser.JsonWhiteSpaceParser.ParseType">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions">
+            <summary>
+                Provides extensions methods to the Object class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.CastTo``1(System.Object)">
+            <summary>
+                Casts the specified obj.
+            </summary>
+            <typeparam name="T"> The target type of the cast. </typeparam>
+            <param name="inputValue"> The object. </param>
+            <returns> The result of the cast. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.Is``1(System.Object)">
+            <summary>
+                Evaluates type compatibility.
+            </summary>
+            <typeparam name="T"> The type to evaluate against. </typeparam>
+            <param name="inputValue"> The object to evaluate compatibility for. </param>
+            <returns> True if the object is compatible otherwise false. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.As``1(System.Object)">
+            <summary>
+                Performs an as operation on the supplied object.
+            </summary>
+            <typeparam name="T"> The target type of the as operation. </typeparam>
+            <param name="inputValue"> The object. </param>
+            <returns> The result of the as operation. </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.IsNull(System.Object)">
+            <summary>
+                Determines whether the specified object is null.
+            </summary>
+            <param name="inputValue"> The object. </param>
+            <returns>
+                <c>true</c> if the specified object is null; otherwise, <c>false</c> .
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.IsNotNull(System.Object)">
+            <summary>
+                Determines whether the specified object is not null.
+            </summary>
+            <param name="inputValue"> The object. </param>
+            <returns>
+                <c>true</c> if the specified object is not null; otherwise, <c>false</c> .
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.MakeEnumeration``1(``0)">
+            <summary>
+            Returns an IEnumerable(of T) containing the supplied object as it's only entry.
+            </summary>
+            <typeparam name="T">
+            The type of IEnumerable to return.
+            </typeparam>
+            <param name="item">
+            The item to be used to create the enumerable.
+            </param>
+            <returns>
+            An IEnumerable(of T) containing the supplied object.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.ArgumentNotNull(System.Object,System.String)">
+            <summary>
+                Throws if the specified object is null.
+            </summary>
+            <param name="inputValue"> The object. </param>
+            <param name="argumentName"> The argumentName. </param>
+            <exception cref="T:System.ArgumentNullException">Thrown if the argument is null.</exception>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.ArgumentNotNullOrEmpty(System.String,System.String)">
+            <summary>
+                Throws if the specified string is null or empty.
+            </summary>
+            <param name="inputValue"> The string. </param>
+            <param name="argumentName"> The argumentName. </param>
+            <exception cref="T:System.ArgumentNullException">Thrown if the argument is null or empty.</exception>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ObjectExtensions.ToKeyValuePairs(System.Collections.Hashtable)">
+            <summary>
+            Converts a hashtable into an enumerable of KeyValue pairs.
+            </summary>
+            <param name="hashtable">The hashtable To convert.</param>
+            <returns>An enumerable of Key-Value pairs.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer">
+            <summary>
+            Used to buffer input for parsing applications.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.#ctor(System.IO.Stream)">
+            <summary>
+            Initializes a new instance of the ParseBuffer class.
+            </summary>
+            <param name="input">
+            The Json Content to parse (UTF8 Encoded).
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.#ctor(System.IO.Stream,System.Text.Encoding)">
+            <summary>
+            Initializes a new instance of the ParseBuffer class.
+            </summary>
+            <param name="input">
+            The Json Content to parse (Encoded per encoding).
+            </param>
+            <param name="encoding">
+            The encoding to use to read the stream.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ParseBuffer class.
+            </summary>
+            <param name="input">
+            The Json Content to parse.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.PeekNext(System.Char@)">
+            <summary>
+            Returns the next character of output if there is one.
+            </summary>
+            <param name="output">
+            The next character in the buffer.
+            </param>
+            <returns>
+            True if there was a character to return otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.PopNext(System.Char@)">
+            <summary>
+            Removes the next character of output if there is on.
+            </summary>
+            <param name="output">
+            The next character of output.
+            </param>
+            <returns>
+            True if there was a character to consume otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.Consume(System.Char@,System.Char[])">
+            <summary>
+            Consumes the next character in the buffer, it it is one of the 
+            expected characters.
+            </summary>
+            <param name="output">
+            The character consumed.
+            </param>
+            <param name="expects">
+            The set of expected (allowed) characters.
+            </param>
+            <returns>
+            True if the next character was in the set and consumed otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.Peek(System.Char@,System.Char[])">
+            <summary>
+            Returns the next character in the buffer, it it is one of the 
+            expected characters.
+            </summary>
+            <param name="output">
+            The character found.
+            </param>
+            <param name="expects">
+            The set of expected (allowed) characters.
+            </param>
+            <returns>
+            True if the next character was in the set and returned otherwise false.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.Location">
+            <summary>
+            Gets the current location of the next character in the buffer.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ParseBuffer.EndOfStream">
+            <summary>
+            Gets a value indicating whether the buffer has reached the end of the stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.QueueExtensions">
+            <summary>
+            Provides extension methods for Queues.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.QueueExtensions.Add``1(System.Collections.Generic.Queue{``0},``0)">
+            <summary>
+            Adds an item to the Queue.  This is the same as an Enqueue operation.
+            </summary>
+            <typeparam name="T">
+            The type of the item stored in the queue.
+            </typeparam>
+            <param name="queue">
+            The queue.
+            </param>
+            <param name="item">
+            The item to add.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.QueueExtensions.Remove``1(System.Collections.Generic.Queue{``0})">
+            <summary>
+            Removes an item from the Queuue.  This is the same as a Dequeue operation.
+            </summary>
+            <typeparam name="T">
+            The type of the item stored in the queue.
+            </typeparam>
+            <param name="queue">
+            The queue.
+            </param>
+            <returns>
+            The next item in the queue.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.QueueExtensions.AddRange``1(System.Collections.Generic.Queue{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds a range of items to the queue.
+            </summary>
+            <typeparam name="T">
+            The type of the item stored in the queue.
+            </typeparam>
+            <param name="queue">
+            The queue.
+            </param>
+            <param name="items">
+            The items to be added (they will be added in the order presented).
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StackExtensions">
+            <summary>
+            Provides extension methods for Stacks.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StackExtensions.Add``1(System.Collections.Generic.Stack{``0},``0)">
+            <summary>
+            Adds an Item to the stack.  This is the same as a Push operation.
+            </summary>
+            <typeparam name="T">
+            The type of items stored in the stack.
+            </typeparam>
+            <param name="stack">
+            The stack.
+            </param>
+            <param name="item">
+            The item to be added.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StackExtensions.Remove``1(System.Collections.Generic.Stack{``0})">
+            <summary>
+            Removes an item from the stack.  This is the same as a Pop operation.
+            </summary>
+            <typeparam name="T">
+            The type of items stored in the stack.
+            </typeparam>
+            <param name="stack">
+            The stack.
+            </param>
+            <returns>
+            The item on the top of the stack that was removed (poped).
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StackExtensions.AddRange``1(System.Collections.Generic.Stack{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds a range of items onto the stack.  This is the same as multiple push operations.
+            </summary>
+            <typeparam name="T">
+            The type of items stored in the stack.
+            </typeparam>
+            <param name="stack">
+            The stack.
+            </param>
+            <param name="items">
+            The items to be added to the stack (they will be added in the order presented).
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StringExtensions">
+            <summary>
+            Provides useful extension methods for strings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StringExtensions.IsNullOrEmpty(System.String)">
+            <summary>
+            Determines if a string is null or empty.
+            </summary>
+            <param name="value">
+            The string to check.
+            </param>
+            <returns>
+            True if the string is null or string.Empty otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StringExtensions.ToUtf8Stream(System.String)">
+            <summary>
+            Returns a stream containing the UTF8 encoded content of a string.
+            </summary>
+            <param name="value">
+            The string to convert.
+            </param>
+            <returns>
+            A UTF8 Stream with the contents of the string present.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StringExtensions.EscapeDataString(System.String)">
+            <summary>
+            Uri Encodes the value of a string.
+            </summary>
+            <param name="inputValue">
+            The string to encode.
+            </param>
+            <returns>
+            A Uri encoded string.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.StringExtensions.IsNotNullOrEmpty(System.String)">
+            <summary>
+            Determines if a string is not null or empty.
+            </summary>
+            <param name="value">
+            The string to check.
+            </param>
+            <returns>
+            True if the string is something other than null or string.Empty otherwise false.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.TaskExtensions">
+            <summary>
+            Provides useful extensions to task when working in a NetFx 4.0 environment.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.TaskExtensions.WaitForResult(System.Threading.Tasks.Task,System.TimeSpan)">
+            <summary>
+            Waits for the task to complete.  This works for tasks that
+            have no return values.  As such, this name is misleading but correct
+            from a consistency standpoint because all Wait request should use this
+            to ensure proper processing of exceptions.
+            </summary>
+            <param name="task">
+            The task parameter.
+            </param>
+            <param name="timeout">
+            The timeout period to wait.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.TaskExtensions.WaitForResult(System.Threading.Tasks.Task)">
+            <summary>
+            Waits for the task to complete.  This works for tasks that
+            have no return values.  As such, this name is misleading but correct
+            from a consistency standpoint because all Wait request should use this
+            to ensure proper processing of exceptions.
+            </summary>
+            <param name="task">
+            The task parameter.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.TaskExtensions.WaitForResult``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Waits for the task to complete and then returns the result.
+            </summary>
+            <typeparam name="T">
+            The type of return value for the task.
+            </typeparam>
+            <param name="task">
+            The task parameter.
+            </param>
+            <returns>
+            The result of the task execution.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.TaskExtensions.WaitForResult``1(System.Threading.Tasks.Task{``0},System.TimeSpan)">
+            <summary>
+            Waits for the task to complete for a given timeout and then returns the result.
+            </summary>
+            <typeparam name="T">
+            The type of return value for the task.
+            </typeparam>
+            <param name="task">
+            The task parameter.
+            </param>
+            <param name="timeout">
+            The timeout period to wait.
+            </param>
+            <returns>
+            The result of the task execution.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.TaskExtensions.AsyncConvert``2(System.Threading.Tasks.Task{``0},System.TimeSpan,System.Func{``0,``1})">
+            <summary>
+            Performs a conversion from one task type to another.
+            </summary>
+            <typeparam name="TOriginalReturnType">
+            The original task return type.
+            </typeparam>
+            <typeparam name="TNewReturnType">
+            The new task return type.
+            </typeparam>
+            <param name="task">
+            The task to execute.
+            </param>
+            <param name="timeout">
+            A time out period to wait for the task execution.
+            </param>
+            <param name="convert">
+            The conversion method that performs the conversion.
+            </param>
+            <returns>
+            A new task that will execute the conversion with the original task 
+            is completed.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.ValidatedNotNullAttribute">
+            <summary>
+               Instructs Code Analysis to treat a method as a validation
+               method for a given parameter and not fire 1062 when it is used.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.ConsoleLogWriter">
+            <summary>
+            Writes log messages to the console.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.LogWriter">
+            <summary>
+            The base class for log writers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogWriter">
+            <summary>
+            The base interface used for logging within this system.
+            This can be implemented to utilize any logging system 
+            desired by the consumer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogWriter.Log(Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity,System.String)">
+            <summary>
+            Used to process a log message.
+            </summary>
+            <param name="severity">
+            The severity of the message.
+            </param>
+            <param name="verbosity">
+            The verbosity of the message.
+            </param>
+            <param name="content">
+            The content of the message.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.LogWriter.#ctor">
+            <summary>
+            Initializes a new instance of the LogWriter class.
+            This will initialize the log writer with "Message" severity and "Normal" verbosity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.LogWriter.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity)">
+            <summary>
+            Initializes a new instance of the LogWriter class.
+            </summary>
+            <param name="severity">
+            The severity of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical severity.
+            </param>
+            <param name="verbosity">
+            The verbosity level of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical verbosity.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.LogWriter.Write(System.String)">
+            <summary>
+            When implemented in a derived class this receives the message that should be logged.
+            </summary>
+            <param name="content">
+            The content of the message that should be logged.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.LogWriter.Log(Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.ConsoleLogWriter.#ctor(Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity)">
+            <summary>
+            Initializes a new instance of the ConsoleLogWriter class.
+            </summary>
+            <param name="severity">
+            The severity of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical severity.
+            </param>
+            <param name="verbosity">
+            The verbosity level of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical verbosity.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.ConsoleLogWriter.#ctor">
+            <summary>
+            Initializes a new instance of the ConsoleLogWriter class.
+            This will initialize the log writer with "Message" severity and "Normal" verbosity.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.ConsoleLogWriter.Write(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.FileLogWriter">
+            <summary>
+            Writes log messages to a supplied file.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.StreamWriterLogWriter">
+            <summary>
+            Writes log messages to a supplied stream writter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.StreamWriterLogWriter.#ctor(System.IO.StreamWriter)">
+            <summary>
+            Initializes a new instance of the StreamWriterLogWriter class.
+            This will initialize the log writer with "Message" severity and "Normal" verbosity.
+            </summary>
+            <param name="writer">
+            The stream writer into which log values should be written.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.StreamWriterLogWriter.#ctor(System.IO.StreamWriter,Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity)">
+            <summary>
+            Initializes a new instance of the StreamWriterLogWriter class.
+            </summary>
+            <param name="writer">
+            The stream writer into which log values should be written.
+            </param>
+            <param name="severity">
+            The severity of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical severity.
+            </param>
+            <param name="verbosity">
+            The verbosity level of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical verbosity.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.StreamWriterLogWriter.Write(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.StreamWriterLogWriter.Dispose(System.Boolean)">
+            <summary>
+            Disposes of the object.
+            </summary>
+            <param name="disposing">
+            True if disposing.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.StreamWriterLogWriter.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.FileLogWriter.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the FileLogWriter class.
+            This will initialize the log writer with "Message" severity and "Normal" verbosity.
+            </summary>
+            <param name="fileName">
+            The path to the file into which log values should be written.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.FileLogWriter.#ctor(System.String,Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity)">
+            <summary>
+            Initializes a new instance of the FileLogWriter class.
+            </summary>
+            <param name="fileName">
+            The path to the file into which log values should be written.
+            </param>
+            <param name="severity">
+            The severity of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical severity.
+            </param>
+            <param name="verbosity">
+            The verbosity level of messages that should be submitted to the log writer.
+            The log writer will accept messages of equal or greater logical verbosity.
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogger">
+            <summary>
+            The main interfaces used for logging within the system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogger.LogMessage(System.String)">
+            <summary>
+            Logs a "message" level severity with "normal" verbosity.
+            </summary>
+            <param name="message">
+            The message to log.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogger.LogMessage(System.String,Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity)">
+            <summary>
+            Logs with the severity and verbosity supplied.
+            </summary>
+            <param name="message">
+            The message to log.
+            </param>
+            <param name="severity">
+            The severity.
+            </param>
+            <param name="verbosity">
+            The verbosity.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogger.AddWriter(Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogWriter)">
+            <summary>
+            Adds a log writer to the logger.
+            </summary>
+            <param name="writer">
+            The log writer.
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity">
+            <summary>
+            The severity of a log message.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity.None">
+            <summary>
+            The message has no severity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity.Message">
+            <summary>
+            The message has "message" severity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity.Informational">
+            <summary>
+            The message has "informational" severity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity.Warning">
+            <summary>
+            The message has "warning" severity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity.Error">
+            <summary>
+            The message has "error" severity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity.Critical">
+            <summary>
+            The message has "critical" severity.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity">
+            <summary>
+            The verbosity of the message.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity.Quiet">
+            <summary>
+            The message has "quiet" verbosity (don't report).
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity.Minimal">
+            <summary>
+            The message has "minimal" verbosity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity.Normal">
+            <summary>
+            The message has "normal" verbosity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity.Detailed">
+            <summary>
+            The message has "detailed" verbosity.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity.Diagnostic">
+            <summary>
+            The message has "diagnostic" verbosity.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.Logger">
+            <summary>
+            The default implementation of the logger.  All messages are 
+            simply passed into the LogWriter.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.Logger.LogMessage(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.Logger.AddWriter(Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.NullLogWriter">
+            <summary>
+            A do nothing log writer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Logging.NullLogWriter.Log(Microsoft.WindowsAzure.Management.HDInsight.Logging.Severity,Microsoft.WindowsAzure.Management.HDInsight.Logging.Verbosity,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction">
+            <summary>
+                Abstracts Http client requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.SendAsync">
+            <summary>
+                Initiates the request and returns a task representing the request asynchronously performed.
+            </summary>
+            <returns>
+                A task representing the response (once it has completed).
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.Method">
+            <summary>
+                Gets or sets the type of Http request to make.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.RequestUri">
+            <summary>
+                Gets or sets the Request uri.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.Content">
+            <summary>
+                Gets or sets the request content.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.RequestHeaders">
+            <summary>
+                Gets the request headers collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.ContentType">
+            <summary>
+                Gets or sets the content type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstraction.Timeout">
+            <summary>
+                Gets or sets the time out to use for the request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory">
+            <summary>
+                Provides a factory for a class that Abstracts Http client requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory.Create(System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="cert">
+                The X509 cert to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory.Create(System.Security.Cryptography.X509Certificates.X509Certificate2,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="cert">
+                The X509 cert to use.
+            </param>
+            <param name="context">
+            The abstraction context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory.Create(System.String)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="token">
+                The access token to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory.Create(System.String,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="token">
+                The access token to use.
+            </param>
+            <param name="context">
+            The abstraction context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory.Create">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="context">
+            The abstraction context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpConstants">
+            <summary>
+                Provides Hard coded values to ensure type safety and prevent typos when working with key static values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpConstants.ApplicationXml">
+            <summary>
+                The Application/Xml mime type.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpConstants.ContentTypeHeader">
+            <summary>
+                The content-type header name.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction">
+            <summary>
+            Abstracts HttpResponseHeaders when using the Http abstraction for http comunication.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction">
+            <summary>
+            Represents a set of Http response headers returned from an http request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.Add(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds a set of values for a header.
+            </summary>
+            <param name="name">
+            The name of the header.
+            </param>
+            <param name="values">
+            The values to associate with the header.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.Add(System.String,System.String)">
+            <summary>
+            Adds a single value to a header.
+            </summary>
+            <param name="name">
+            The name of the header.
+            </param>
+            <param name="value">
+            The value to add as the only element in the headers enumeration of values.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.Clear">
+            <summary>
+            Clears the list of headers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.Contains(System.String)">
+            <summary>
+            Determines if a header exists in the collection.
+            </summary>
+            <param name="name">
+            The name of the header.
+            </param>
+            <returns>
+            True if the header exists otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.Remove(System.String)">
+            <summary>
+            Removes a header from the collection.
+            </summary>
+            <param name="name">
+            The name of the header to remove.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.TryGetValue(System.String,System.Collections.Generic.IEnumerable{System.String}@)">
+            <summary>
+            Tries to get the values associated with a header name.
+            </summary>
+            <param name="name">
+            The name of the header.
+            </param>
+            <param name="values">
+            An out parameter into which the header values will be placed.
+            </param>
+            <returns>
+            True if the header exists in the collection otherwise false.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.GetValues(System.String)">
+            <summary>
+            Gets the values associated with a specific header.
+            </summary>
+            <param name="name">
+            The name of the header.
+            </param>
+            <returns>
+            The values associated with the header.
+            </returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction.Item(System.String)">
+            <summary>
+            Gets the headers values associated with a header name.
+            </summary>
+            <param name="name">
+            The name of the header.
+            </param>
+            <returns>
+            The values associated with the header.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.#ctor">
+            <summary>
+            Initializes a new instance of the HttpResponseHeadersAbstraction class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.#ctor(System.Net.Http.Headers.HttpResponseHeaders)">
+            <summary>
+            Initializes a new instance of the HttpResponseHeadersAbstraction class.
+            </summary>
+            <param name="headers">
+            An actual HttpResponseHeaders from which this class should get its values.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.Add(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.Add(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.Contains(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.Remove(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.TryGetValue(System.String,System.Collections.Generic.IEnumerable{System.String}@)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.GetValues(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseHeadersAbstraction.Item(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseMessageAbstraction">
+            <summary>
+            Represents a response from an Http request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseMessageAbstraction">
+            <summary>
+                Abstracts Http client responses.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseMessageAbstraction.StatusCode">
+            <summary>
+                Gets the status code for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseMessageAbstraction.Headers">
+            <summary>
+            Gets the Response Headers for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseMessageAbstraction.Content">
+            <summary>
+                Gets the content returned by the response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseMessageAbstraction.#ctor(System.Net.HttpStatusCode,Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.IHttpResponseHeadersAbstraction,System.String)">
+            <summary>
+            Initializes a new instance of the HttpResponseMessageAbstraction class.
+            </summary>
+            <param name="statusCode">
+            The HttpStatusCode.
+            </param>
+            <param name="headers">
+            The headers returned.
+            </param>
+            <param name="content">
+            The content returned.
+            </param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseMessageAbstraction.StatusCode">
+            <summary>
+            Gets the status code of the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseMessageAbstraction.Headers">
+            <summary>
+            Gets the Response Headers for the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Framework.Core.Library.WebRequest.HttpResponseMessageAbstraction.Content">
+            <summary>
+            Gets the content of the request.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,2560 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.WindowsAzure.Management.HDInsight</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionCache">
+            <summary>
+            Provides a cache for JobSubmission details needed by the system.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.IJobSubmissionCache">
+            <summary>
+            Provides a cache of JobSubmission data needed to submit jobs.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.IJobSubmissionCache.GetCredentails(System.Guid,System.String)">
+            <summary>
+            Get's previous stored connection credentials.
+            </summary>
+            <param name="subscriptionId">
+            The subscription Id.
+            </param>
+            <param name="cluster">
+            The cluster.
+            </param>
+            <returns>
+            The previously resolved connection credentials.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.IJobSubmissionCache.StoreCredentails(System.Guid,System.String,Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionClusterDetails)">
+            <summary>
+            Stores a set of credentials for use later.
+            </summary>
+            <param name="subscriptionId">
+            The subscription Id.
+            </param>
+            <param name="cluster">
+            The cluster.
+            </param>
+            <param name="credential">
+            The credentials.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionCache.GetCredentails(System.Guid,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionCache.StoreCredentails(System.Guid,System.String,Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionClusterDetails)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.ClusterManager.IHDInsightClusterOverrideManager">
+            <summary>
+            Provides an interface to manage how various connection systems
+            work within the HDInsight system.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters">
+            <summary>
+            Object that encapsulates all the properties of a List Request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ClusterCreateParameters class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.Name">
+            <summary>
+            Gets or sets the Name of the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.Location">
+            <summary>
+            Gets or sets the datacenter location for the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.DefaultStorageAccountName">
+            <summary>
+            Gets or sets the StorageName for the default Azure Storage Account.
+            This account will be used for schemaless paths and the cluster will 
+            leverage to store some cluster level files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.DefaultStorageAccountKey">
+            <summary>
+            Gets or sets the StorageKey for the default Azure Storage Account.
+            This account will be used for schemaless paths and the cluster will 
+            leverage to store some cluster level files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.DefaultStorageContainer">
+            <summary>
+            Gets or sets the StorageContainer for the default Azure Storage Account.
+            This account will be used for schemaless paths and the cluster will 
+            leverage to store some cluster level files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.UserName">
+            <summary>
+            Gets or sets the login for the cluster's user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.Password">
+            <summary>
+            Gets or sets the password for the cluster's user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.ClusterSizeInNodes">
+            <summary>
+            Gets or sets the number of workernodes for the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.Version">
+            <summary>
+            Gets or sets the version of the HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.EnsureHighAvailability">
+            <summary>
+            Gets or sets a value indicating whether Head Node is highly available.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.AdditionalStorageAccounts">
+            <summary>
+            Gets additional Azure Storage Account that you want to enable access to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.OozieMetastore">
+            <summary>
+            Gets or sets the database to store the metadata for Oozie.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.HiveMetastore">
+            <summary>
+            Gets or sets the database to store the metadata for Hive.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.CoreConfiguration">
+            <summary>
+            Gets the core configuration of this HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.HdfsConfiguration">
+            <summary>
+            Gets the hdfs configuration of this HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.MapReduceConfiguration">
+            <summary>
+            Gets the map-reduce configuration of this HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.HiveConfiguration">
+            <summary>
+            Gets the hive configuration of this HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters.OozieConfiguration">
+            <summary>
+            Gets the core configuration of this HDInsight cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails">
+            <summary>
+            Object that encapsulates all the properties of a List Request.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.#ctor">
+            <summary>
+            Initializes a new instance of the ClusterDetails class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.Name">
+            <summary>
+            Gets or sets the Name of the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.StateString">
+            <summary>
+            Gets or sets the a string value of the state of the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.Version">
+            <summary>
+            Gets or sets the version of the HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.VersionStatus">
+            <summary>
+            Gets or sets the version status of the HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.VersionNumber">
+            <summary>
+            Gets or sets the version of the HDInsight cluster as a number.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.State">
+            <summary>
+            Gets or sets the parsed value of the state of the cluster
+            Note: For compatibility reassons, any new or null states will revert to "UNKOWN".
+            but the value will be preserved in State.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.Error">
+            <summary>
+            Gets or sets a possible error state for the cluster (if exists).
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.CreatedDate">
+            <summary>
+            Gets or sets the CreateDate of the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.ConnectionUrl">
+            <summary>
+            Gets or sets the connection URL for the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.HttpUserName">
+            <summary>
+            Gets or sets the login username for the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.HttpPassword">
+            <summary>
+            Gets or sets the password associated with Http requests to the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.RdpUserName">
+            <summary>
+            Gets or sets the Rdp user name associated with the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.Location">
+            <summary>
+            Gets or sets the Datacenter location of the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.ClusterSizeInNodes">
+            <summary>
+            Gets or sets the count of worker nodes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.DefaultStorageAccount">
+            <summary>
+            Gets or sets the default storage account registered with this cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.SubscriptionId">
+            <summary>
+            Gets or sets the subscriptionid associated with this cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails.AdditionalStorageAccounts">
+            <summary>
+            Gets or sets the additional storage accounts registered with this cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs">
+            <summary>
+            EventArgs for the ClusterProvisioning event on the IHDInsightClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs.#ctor(Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails,Microsoft.WindowsAzure.Management.HDInsight.ClusterState)">
+            <summary>
+            Initializes a new instance of the ClusterProvisioningStatusEventArgs class.
+            </summary>
+            <param name="clusterDetails">Details of the cluster being provisioned.</param>
+            <param name="clusterState">Current state of the cluster.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs.State">
+            <summary>
+            Gets the current state of the HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs.Cluster">
+            <summary>
+            Gets the HDInsightCluster being provisioned.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ConfigValuesCollection">
+            <summary>
+            Collection of configuration properties for Hadoop services.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IPayloadConverter">
+            <summary>
+            Converts payloads to and from an object form.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IPayloadConverter.DeserializeConnectivityStatus(System.String)">
+            <summary>
+            Deserializes the status response of a connectivity request.
+            </summary>
+            <param name="payload">The payload.</param>
+            <returns>
+            A Payload Response with the details of the User Change Request Status.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IPayloadConverter.DeserializeConnectivityResponse(System.String)">
+            <summary>
+            Deserializes a Connectivity Response.
+            </summary>
+            <param name="payload">The payload.</param>
+            <returns>
+            A PayloadResponse object with the operation id for the data.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IPayloadConverter.DeserializeListContainersResult(System.String,System.String,System.Guid)">
+            <summary>
+            Deserializes the result of a List Containers call.
+            </summary>
+            <param name="payload">
+            The Payload.
+            </param>
+            <param name="deploymentNamespace">
+            The deployment namespace.
+            </param>
+            <param name="subscriptionId">
+            The Subscription Id.
+            </param>
+            <returns>
+            A collection of HDInsight cluster objects.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IPayloadConverter.SerializeClusterCreateRequest(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <summary>
+            Serializes a create cluster request into a string that can be used as the 
+            payload for a rest call.
+            </summary>
+            <param name="cluster">
+            The create cluster request object.
+            </param>
+            <returns>
+            A string that can be used as the payload in a rest call.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IPayloadConverter.ConvertStringToVersion(System.String)">
+            <summary>
+            Converts an HDInsight version string to a Version object.
+            </summary>
+            <param name="version">
+            The version string.
+            </param>
+            <returns>
+            A version object that represents the components of the version string.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.OozieConfiguration">
+            <summary>
+            Configuration for the Hive Hadoop service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.OozieConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the OozieConfiguration class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.OozieConfiguration.ConfigurationCollection">
+            <summary>
+            Gets the configuration collection for Hive.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.OozieConfiguration.AdditionalSharedLibraries">
+            <summary>
+            Gets or sets the location to find additional Oozie libraries such as jars,udfs and serdes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.OozieConfiguration.AdditionalActionExecutorLibraries">
+            <summary>
+            Gets or sets the location to find additional Oozie executables.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HDInsightVersion">
+            <summary>
+            Version spec for HDInsight clusters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightVersion.ToString">
+            <summary>
+            Converts this object into its string representation.
+            </summary>
+            <returns>The string representation of this object.</returns>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightVersion.Version">
+            <summary>
+            Gets or sets the Semantic version for the HDInsight cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightVersion.VersionStatus">
+            <summary>
+            Gets or sets the version status for the HDInsight cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HiveConfiguration">
+            <summary>
+            Configuration for the Hive Hadoop service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HiveConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the HiveConfiguration class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HiveConfiguration.ConfigurationCollection">
+            <summary>
+            Gets the configuration collection for Hive.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HiveConfiguration.AdditionalLibraries">
+            <summary>
+            Gets or sets the location to find additional Hive libraries such as jars,udfs and serdes.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.VersionStatus">
+            <summary>
+            Enumeration of version status.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.VersionStatus.Obsolete">
+            <summary>
+            The version of the HDInsight cluster is lower than the minimum version supported by the SDK.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.VersionStatus.Compatible">
+            <summary>
+            The version of the HDInsight cluster is supported by the SDK.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.VersionStatus.ToolsUpgradeRequired">
+            <summary>
+            The version of the HDInsight cluster is higher than the maximum version supported by the SDK.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.WabStorageAccountConfiguration">
+            <summary>
+            Azure Storage Account Configuration for addition ASV HDInsight drives.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.WabStorageAccountConfiguration.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the WabStorageAccountConfiguration class.
+            </summary>
+            <param name="accountName">Account name of the Storage Account.</param>
+            <param name="key">Key for the Storage Account.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.WabStorageAccountConfiguration.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the WabStorageAccountConfiguration class.
+            </summary>
+            <param name="accountName">Account name of the Storage Account.</param>
+            <param name="key">Key for the Storage Account.</param>
+            <param name="container">Container name of the Storage Account.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.WabStorageAccountConfiguration.Name">
+            <summary>
+            Gets the Name of the Storage Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.WabStorageAccountConfiguration.Key">
+            <summary>
+            Gets the Key for the Storage Account.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.WabStorageAccountConfiguration.Container">
+            <summary>
+            Gets the Container for the Storage Account.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.HDInsightConstants">
+            <summary>
+            Constants for versioning support.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.HDInsightConstants.ClusterVersionTooHighForClusterOperations">
+            <summary>
+            Gets an error message template for use when the cluster version is too low for this version of the SDK. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.HDInsightConstants.ClusterVersionTooLowForClusterOperations">
+            <summary>
+            Gets an error message template for use when the cluster version is too high for this version of the SDK. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.HDInsightConstants.ClusterVersionTooHighForJobSubmissionOperations">
+            <summary>
+            Gets an error message template for use when the cluster version is too low for this version of the SDK. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.HDInsightConstants.ClusterVersionTooLowForJobSubmissionOperations">
+            <summary>
+            Gets an error message template for use when the cluster version is too high for this version of the SDK. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.MapReduceConfiguration">
+            <summary>
+            Configuration for the MapReduce Hadoop service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.MapReduceConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the MapReduceConfiguration class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.MapReduceConfiguration.ConfigurationCollection">
+            <summary>
+            Gets the configuration collection for Map reduce.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.MapReduceConfiguration.CapacitySchedulerConfigurationCollection">
+            <summary>
+            Gets the capacity scheduler configuration collection for Map reduce.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential">
+            <summary>
+            Class that provides the credentials to submit jobs to an HDInsight cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential">
+            <summary>
+                Class that provides the credentials to talk to an RDFE with a token.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAccessTokenCredential">
+            <summary>
+            Root interface for HDInsight ADS Credentials.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials">
+            <summary>
+            Root interface for HDInsight Subscription Credentials.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials.SubscriptionId">
+            <summary>
+            Gets or sets the subscription ID to be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials.Endpoint">
+            <summary>
+            Gets or sets the Azure Deployment Endpoint to talk to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials.DeploymentNamespace">
+            <summary>
+            Gets or sets the HDInsight Namespace for Azure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAccessTokenCredential.AccessToken">
+            <summary>
+            Gets or sets the Access Token for comunication with the RP.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.#ctor">
+            <summary>
+            Initializes a new instance of the HDInsightAccessTokenCredential class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.#ctor(System.Guid,System.String)">
+            <summary>
+                Initializes a new instance of the HDInsightAccessTokenCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="token">Access token to be used to connect authenticate the user with the subscription in azure.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.#ctor(Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential)">
+            <summary>
+                Initializes a new instance of the HDInsightAccessTokenCredential class.
+            </summary>
+            <param name="credential">The credentials to copy.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.#ctor(System.Guid,System.String,System.Uri)">
+            <summary>
+                Initializes a new instance of the HDInsightAccessTokenCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="token">Access token to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.#ctor(System.Guid,System.String,System.Uri,System.String)">
+            <summary>
+                Initializes a new instance of the HDInsightAccessTokenCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="token">Access token to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+            <param name="deploymentNamespace">Namespace for the HDInsight service.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.Endpoint">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.DeploymentNamespace">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.SubscriptionId">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential.AccessToken">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential.#ctor">
+            <summary>
+            Initializes a new instance of the JobSubmissionAccessTokenCredential class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential.#ctor(Microsoft.WindowsAzure.Management.HDInsight.HDInsightAccessTokenCredential,System.String)">
+            <summary>
+                Initializes a new instance of the JobSubmissionAccessTokenCredential class.
+            </summary>
+            <param name="credentials">HDInsightAccessTokenCredential to be used.</param>
+            <param name="cluster">The cluster to connect to.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential.#ctor(System.Guid,System.String,System.String)">
+            <summary>
+                Initializes a new instance of the JobSubmissionAccessTokenCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="token">Token to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="cluster">The cluster to connect to.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential.#ctor(System.Guid,System.String,System.String,System.Uri)">
+            <summary>
+                Initializes a new instance of the JobSubmissionAccessTokenCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="token">Token to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="cluster">The cluster to connect to.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential.#ctor(System.Guid,System.String,System.String,System.Uri,System.String)">
+            <summary>
+                Initializes a new instance of the JobSubmissionAccessTokenCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="token">Token to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="cluster">The cluster to connect to.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+            <param name="deploymentNamespace">Namespace for the HDInsight service.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionAccessTokenCredential.Cluster">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HDInsightHttpClientAbstractionFactory">
+            <summary>
+                Provides a factory for a class that Abstracts Http client requests.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightHttpClientAbstractionFactory">
+            <summary>
+                Provides a factory for a class that Abstracts Http client requests.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="credentials">
+                The credentials to use.
+            </param>
+            <param name="context">
+                The context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="credentials">
+                The credentials to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="context">
+                The context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightHttpClientAbstractionFactory.Create">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="credentials">
+                The credentials to use.
+            </param>
+            <param name="context">
+                The context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="credentials">
+                The credentials to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightHttpClientAbstractionFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <param name="context">
+                The context to use.
+            </param>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightHttpClientAbstractionFactory.Create">
+            <summary>
+                Creates a new HttpClientAbstraction class.
+            </summary>
+            <returns>
+                A new instance of the HttpClientAbstraction.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HDInsightSubscriptionAbstractionContext">
+            <summary>
+            Represents an Abstraction Context for a Hadoop Subscription.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionAbstractionContext">
+            <summary>
+            Represents an Abstraction Context around SubscriptionCredentials.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightSubscriptionAbstractionContext.#ctor(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,System.Threading.CancellationToken)">
+            <summary>
+            Initializes a new instance of the HDInsightSubscriptionAbstractionContext class.
+            </summary>
+            <param name="credentials">
+            The subscription credentials.
+            </param>
+            <param name="token">
+            A Cancelation Token.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightSubscriptionAbstractionContext.#ctor(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Initializes a new instance of the HDInsightSubscriptionAbstractionContext class.
+            </summary>
+            <param name="credentials">
+            The subscription credentials.
+            </param>
+            <param name="context">
+            An abstraction context to clone.
+            </param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightSubscriptionAbstractionContext.Credentials">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightCertificateCredential">
+            <summary>
+            Connection logic.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightCertificateCredential.Certificate">
+            <summary>
+            Gets or sets the certificate to be used.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential">
+            <summary>
+                Class that provides the credentials to talk to an RDFE.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.#ctor">
+            <summary>
+            Initializes a new instance of the HDInsightCertificateCredential class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.#ctor(System.Guid,System.Security.Cryptography.X509Certificates.X509Certificate2)">
+            <summary>
+                Initializes a new instance of the HDInsightCertificateCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="certificate">Certificate to be used to connect authenticate the user with the subscription in azure.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.#ctor(Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential)">
+            <summary>
+                Initializes a new instance of the HDInsightCertificateCredential class.
+            </summary>
+            <param name="credential">The credentials to copy.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.#ctor(System.Guid,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Uri)">
+            <summary>
+                Initializes a new instance of the HDInsightCertificateCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="certificate">Certificate to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.#ctor(System.Guid,System.Security.Cryptography.X509Certificates.X509Certificate2,System.Uri,System.String)">
+            <summary>
+                Initializes a new instance of the HDInsightCertificateCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="certificate">Certificate to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+            <param name="deploymentNamespace">Namespace for the HDInsight service.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.Endpoint">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.DeploymentNamespace">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.SubscriptionId">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential.Certificate">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightClient">
+            <summary>
+            Client Library that allows interacting with the Azure HDInsight Deployment Service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient">
+            <summary>
+            Client Library that allows interacting with the Azure HDInsight Deployment Service.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightClientBase">
+            <summary>
+            Provides the base interface for ClusterProvisioning Clients.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightClientBase.PollingInterval">
+            <summary>
+            Gets or sets the polling interval for the CreateCluster\DeleteCluster operations.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightClientBase.CancellationToken">
+            <summary>
+            Gets the Cancellation Token for this client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.RaiseClusterProvisioningEvent(System.Object,Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs)">
+            <summary>
+            Raises the cluster provisioning event.
+            </summary>
+            <param name="sender">The IHDInsightManagementPocoClient instance.</param>
+            <param name="e">EventArgs for the event.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.ListAvailableLocationsAsync">
+            <summary>
+            Queries the locations where HDInsight has been enabled for the subscription.
+            </summary>
+            <returns>List of Windows Azure locations.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.ListClustersAsync">
+            <summary>
+            Queries the HDInsight Clusters registered.
+            </summary>
+            <returns>Task that returns a list of HDInsight Clusters.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.ListResourceProviderPropertiesAsync">
+            <summary>
+            Queries the properties of a given subscription for the  HDInsight resource type.
+            </summary>
+            <returns>List of sindows Azure locations.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.ListAvailableVersionsAsync">
+            <summary>
+            Queries the versions of HDInsight that have been enabled for the subscription.
+            </summary>
+            <returns>List of Windows Azure HDInsight versions.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.GetClusterAsync(System.String)">
+            <summary>
+            Queries for a specific HDInsight Cluster registered.
+            </summary>
+            <param name="name">Name of the HDInsight cluster.</param>
+            <returns>Task that returns an HDInsight Cluster or NULL if not found.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.CreateClusterAsync(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <summary>
+            Submits a request to create an HDInsight cluster and waits for it to complete.
+            </summary>
+            <param name="clusterCreateParameters">Request object that encapsulates all the configurations.</param>
+            <returns>Object that will manage the deployment and returns an object that represents the HDInsight Cluster created.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.DeleteClusterAsync(System.String)">
+            <summary>
+            Submits a request to delete an HDInsight cluster.
+            </summary>
+            <param name="name">Name of the HDInsight cluster.</param>
+            <returns>Task that submits a DeleteCluster request.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.EnableHttpAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Enables Http Connectivity on the HDInsight cluster.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="httpUserName">
+            The user name to use when enabling Http Connectivity.
+            </param>
+            <param name="httpPassword">
+            The password to use when enabling Http Connectivity.
+            </param>
+            <returns>
+            A task that can be used to wait for the request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.DisableHttpAsync(System.String,System.String)">
+            <summary>
+            Disables Http Connectivity on the HDInsight cluster.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <returns>
+            A task that can be used to wait for the request to complete.
+            </returns>
+        </member>
+        <member name="E:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightAsyncClient.ClusterProvisioning">
+            <summary>
+            Event that is fired when the client provisions a cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient">
+            <summary>
+            Client Library that allows interacting with the Azure HDInsight Deployment Service.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.ListAvailableLocations">
+            <summary>
+            Queries the locations where HDInsight has been enabled for the subscription.
+            </summary>
+            <returns>List of sindows Azure locations.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.ListResourceProviderProperties">
+            <summary>
+            Queries the locations where HDInsight has been enabled for the subscription.
+            </summary>
+            <returns>List of sindows Azure locations.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.ListAvailableVersions">
+            <summary>
+            Queries the versions of HDInsight that have been enabled for the subscription.
+            </summary>
+            <returns>List of sindows Azure locations.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.ListClusters">
+            <summary>
+            Queries the HDInsight Clusters registered.
+            </summary>
+            <returns>List of registered HDInsight Clusters.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.GetCluster(System.String)">
+            <summary>
+            Queries for a specific HDInsight Cluster registered.
+            </summary>
+            <param name="dnsName">Name of the HDInsight cluster.</param>
+            <returns>HDInsight Cluster or NULL if not found.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.CreateCluster(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <summary>
+            Submits a request to create an HDInsight cluster and waits for it to complete.
+            </summary>
+            <param name="cluster">Request object that encapsulates all the configurations.</param>
+            <returns>Object that represents the HDInsight Cluster created.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.CreateCluster(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters,System.TimeSpan)">
+            <summary>
+            Submits a request to create an HDInsight cluster and waits for it to complete.
+            </summary>
+            <param name="cluster">Request object that encapsulates all the configurations.</param>
+            <param name="timeout">Timeout interval for the operation.</param>
+            <returns>Object that represents the HDInsight Cluster created.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.DeleteCluster(System.String)">
+            <summary>
+            Submits a request to delete an HDInsight cluster and waits for it to complete.
+            </summary>
+            <param name="dnsName">Name of the HDInsight cluster.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.DeleteCluster(System.String,System.TimeSpan)">
+            <summary>
+            Submits a request to delete an HDInsight cluster and waits for it to complete.
+            </summary>
+            <param name="dnsName">Name of the HDInsight cluster.</param>
+            <param name="timeout">Timeout interval for the operation.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.EnableHttp(System.String,System.String,System.String,System.String)">
+            <summary>
+            Enables Http Connectivity on the HDInsight cluster.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="httpUserName">
+            The user name to use when enabling Http Connectivity.
+            </param>
+            <param name="httpPassword">
+            The password to use when enabling Http Connectivity.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSyncClient.DisableHttp(System.String,System.String)">
+            <summary>
+            Disables Http Connectivity on the HDInsight cluster.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightClient.AddLogWriter(Microsoft.WindowsAzure.Management.HDInsight.Logging.ILogWriter)">
+            <summary>
+            Adds a log writer to the client.
+            </summary>
+            <param name="logWriter">
+            The log writer.
+            </param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightClient.Credentials">
+            <summary>
+            Gets the cluster credentials.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DEFAULTHDINSIGHTVERSION">
+            <summary>
+                Default HDInsight version.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DefaultPollingInterval">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.#ctor(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+            Initializes a new instance of the HDInsightClient class.
+            </summary>
+            <param name="credentials">
+            The credential to use when operating against the service.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.Connect(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+            Connects to an HDInsight subscription.
+            </summary>
+            <param name="credentials">
+            The credential used to connect to the subscription.
+            </param>
+            <returns>
+            A new HDInsight client.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListAvailableLocationsAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListResourceProviderPropertiesAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListAvailableVersionsAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListClustersAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.GetClusterAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.CreateClusterAsync(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.RaiseClusterProvisioningEvent(System.Object,Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs)">
+            <summary>
+            Raises the cluster provisioning event.
+            </summary>
+            <param name="sender">The IHDInsightManagementPocoClient instance.</param>
+            <param name="e">EventArgs for the event.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.HandleClusterWaitNotifyEvent(Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails)">
+            <summary>
+            Used to handle the notification events during waiting.
+            </summary>
+            <param name="cluster">
+            The cluster in its current state.
+            </param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DeleteClusterAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.EnableHttpAsync(System.String,System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DisableHttp(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.EnableHttp(System.String,System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DisableHttpAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListAvailableLocations">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListResourceProviderProperties">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListAvailableVersions">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ListClusters">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.GetCluster(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.CreateCluster(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.CreateCluster(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DeleteCluster(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.DeleteCluster(System.String,System.TimeSpan)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.Credentials">
+            <summary>
+            Gets the connection credential.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.PollingInterval">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.WindowsAzure.Management.HDInsight.HDInsightClient.ClusterProvisioning">
+            <inheritdoc />
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.NodeVMSize.ExtraSmall">
+            <summary>
+            An extra small virtual machine, shared core.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.NodeVMSize.Small">
+            <summary>
+            A small virtual machine, 1 core.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.NodeVMSize.Medium">
+            <summary>
+            Medium virtual machine, 2 cores.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.NodeVMSize.Large">
+            <summary>
+            Large virtual machine, 4 cores.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.NodeVMSize.ExtraLarge">
+            <summary>
+            Extra large virtual machine, 8 cores.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.PayloadErrorDetails">
+            <summary>
+            Provides error details for a payload.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.PayloadErrorDetails.StatusCode">
+            <summary>
+            Gets or sets the status code returned.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.PayloadErrorDetails.ErrorId">
+            <summary>
+            Gets or sets the error ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.PayloadErrorDetails.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.PayloadResponse`1">
+            <summary>
+            The Response from a "passthrough" request to the server.
+            </summary>
+            <typeparam name="T">
+            The type of data to be returned by the response.
+            </typeparam>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.PayloadResponse`1.Data">
+            <summary>
+            Gets or sets the data returned by the response.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.PayloadResponse`1.ErrorDetails">
+            <summary>
+            Gets or sets the error details for the response.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestUserType">
+            <summary>
+            The type of a user change request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestUserType.Rdp">
+            <summary>
+            An Rdp request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestUserType.Http">
+            <summary>
+            An http request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationType">
+            <summary>
+            The type of change request to make.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationType.Enable">
+            <summary>
+            Enable the user.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationType.Disable">
+            <summary>
+            Disable the user.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationStatus">
+            <summary>
+            The status of the change request.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationStatus.Pending">
+            <summary>
+            The request is pending.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationStatus.Completed">
+            <summary>
+            The request is completed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationStatus.Error">
+            <summary>
+            The request resulted in an error.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestStatus">
+            <summary>
+            Provides the status of the User Change Request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestStatus.OperationType">
+            <summary>
+            Gets or sets the type of operation requested.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestStatus.UserType">
+            <summary>
+            Gets or sets the type of user change requested.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestStatus.RequestIssueDate">
+            <summary>
+            Gets or sets the time the request was issued.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestStatus.State">
+            <summary>
+            Gets or sets the state of the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestStatus.ErrorDetails">
+            <summary>
+            Gets or sets any error details relating to the request.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.HDInsightManagementPocoHelper">
+            <summary>
+            Provides helper functions to the Poco layer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.HDInsightManagementPocoHelper.ValidateResponse``1(Microsoft.WindowsAzure.Management.HDInsight.PayloadResponse{``0})">
+            <summary>
+            Validates that a response is valid.  This method throws an exception if there
+            was an error in the response payload.
+            </summary>
+            <typeparam name="T">
+            The type name of the payload response.
+            </typeparam>
+            <param name="response">
+            The response object.
+            </param>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions">
+            <summary>
+            Provides helper extension methods for the Management Poco Client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.WaitForCondition``1(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,System.Func{System.Threading.Tasks.Task{``0}},System.Func{``0,Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.PollResult},System.Action{``0},System.TimeSpan,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Waits for a condition to be satisfied.
+            </summary>
+            <typeparam name="T">
+            The changeType of object that will be operated on.
+            </typeparam>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="poll">
+            The function to poll the client for state.
+            </param>
+            <param name="continuePolling">
+            A function to evaluate the state to see if it matches the condition.
+            </param>
+            <param name="notifyHandler">
+            A notification handler used to rais events when the status changes.
+            </param>
+            <param name="interval">
+            A time frame to wait between polls.
+            </param>
+            <param name="timeout">
+            The amount of time to wait for the condition to be satisfied.
+            </param>
+            <param name="cancellationToken">
+            A Cancelation Token that can be used to cancel the request.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.WaitForClusterNullOrError(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,System.String,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Waits for the cluster to not exist (null) or go into an error state.
+            </summary>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="dnsName">
+            The dnsName of the cluster.
+            </param>
+            <param name="timeout">
+            The amount of time to wait for the condition to be satisfied.
+            </param>
+            <param name="cancellationToken">
+            A Cancelation Token that can be used to cancel the request.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.WaitForClusterNull(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,System.String,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Waits for the cluster to not exist (null).
+            </summary>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="dnsName">
+            The dnsName of the cluster.
+            </param>
+            <param name="timeout">
+            The amount of time to wait for the condition to be satisfied.
+            </param>
+            <param name="cancellationToken">
+            A Cancelation Token that can be used to cancel the request.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.WaitForClusterNotNull(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,System.String,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Waits for the cluster to exist (!null).
+            </summary>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="dnsName">
+            The dnsName of the cluster.
+            </param>
+            <param name="timeout">
+            The amount of time to wait for the condition to be satisfied.
+            </param>
+            <param name="cancellationToken">
+            A Cancelation Token that can be used to cancel the request.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.WaitForClusterInConditionOrError(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,System.Action{Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails},System.String,System.TimeSpan,System.TimeSpan,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext,Microsoft.WindowsAzure.Management.HDInsight.ClusterState[])">
+            <summary>
+            Waits for the cluster to not exist (null) or go into an error state or be in one of the listed states.
+            </summary>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="notifyHandler">
+            A notification handler used to notify when the state changes.
+            </param>
+            <param name="dnsName">
+            The dnsName of the cluster.
+            </param>
+            <param name="timeout">
+            The amount of time to wait for the condition to be satisfied.
+            </param>
+            <param name="interval">
+            A time frame to wait between polls.
+            </param>
+            <param name="context">
+            A Cancelation Token that can be used to cancel the request.
+            </param>
+            <param name="states">
+            The set of states that would cause this funciton to terminate.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.PollSignal(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,Microsoft.WindowsAzure.Management.HDInsight.ClusterDetails,Microsoft.WindowsAzure.Management.HDInsight.ClusterState[])">
+            <summary>
+            Poll Signal that is triggered on every poll for the cluster condition.
+            </summary>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="cluster">HDInsight cluster.</param>
+            <param name="states">Acceptable states at which the polling can stop.</param>
+            <returns>True, if we want polling to continue, false otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientExtensions.WaitForOperationCompleteOrError(Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient,System.String,System.String,System.Guid,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+            Waits for an operation on the cluster to complete.
+            </summary>
+            <param name="client">
+            The client instance this is extending.
+            </param>
+            <param name="dnsName">
+            The dnsName of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="operation">
+            The operation Id to check.
+            </param>
+            <param name="timeout">
+            The amount of time to wait for the condition to be satisfied.
+            </param>
+            <param name="cancellationToken">
+            A Cancelation Token that can be used to cancel the request.
+            </param>
+            <returns>
+            An awaitable task.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilder">
+            <summary>
+            Used to build Uris to access Service endpoints.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilder.GetListCloudServicesUri">
+            <summary>
+            Gets the Uri for a ListCloudServices request.
+            </summary>
+            <returns>The Uri for a ListCloudServices request.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilder.GetCreateResourceUri(System.String,System.String,System.String)">
+            <summary>
+            Gets the Uri for a Create Resource request.
+            </summary>
+            <param name="resourceId">Resource Id.</param>
+            <param name="resourceType">Resource Type.</param>
+            <param name="location">Region the cluster is to be deployed in.</param>
+            <returns>The Uri for a Create Resource request.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilder.GetDeleteContainerUri(System.String,System.String)">
+            <summary>
+            Gets the Uri for a Delete Container request.
+            </summary>
+            <param name="dnsName">DnsName of the cluster.</param>
+            <param name="location">Region the cluster is deployed in.</param>
+            <returns>The Uri for a Delete Container request.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilder.GetEnableDisableHttpUri(System.String,System.String)">
+            <summary>
+            Gets the Uri for a request to enable or disable Http Services.
+            </summary>
+            <param name="dnsName">DnsName of the cluster.</param>
+            <param name="location">Region the cluster is deployed in.</param>
+            <returns>The Uri for a request to enable or disable Http Services.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilder.GetOperationStatusUri(System.String,System.String,System.String,System.Guid)">
+            <summary>
+            Gets the Uri for a request to get Operation status.
+            </summary>
+            <param name="dnsName">DnsName of the cluster.</param>
+            <param name="resourceType">Resource Type.</param>
+            <param name="location">Region the cluster is to be deployed in.</param>
+            <param name="operationId">Operation Id.</param>
+            <returns>The Uri for a request to get Operation status.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightManagementRdfeUriBuilder.GetListCloudServicesUri">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightManagementRdfeUriBuilder.GetCreateResourceUri(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightManagementRdfeUriBuilder.GetDeleteContainerUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightManagementRdfeUriBuilder.GetEnableDisableHttpUri(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightManagementRdfeUriBuilder.GetOperationStatusUri(System.String,System.String,System.String,System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilderFactory">
+            <summary>
+            Used to create instances of the IHDInsightManagementRestClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestUriBuilderFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+            Creates a new instance of the HDInsightManagementRestUriBuilder concrete.
+            </summary>
+            <param name="credentials">
+            The credentials to use when connecting to the cluster.
+            </param>
+            <returns>
+            A new instance of the client.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IRdfeServiceRestClientFactory">
+            <summary>
+            Factory class to create an instance of the IRdfeServiceRestClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IRdfeServiceRestClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Creates an instance of the IRdfeServiceRestClient.
+            </summary>
+            <param name="credentials">Credentials object.</param>
+            <param name="context">The Abstraction context.</param>
+            <returns>An instance of the IRdfeServiceRestClient.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IRdfeServiceRestClient">
+            <summary>
+            Specifies a contract for accessing rdfe properties of a subscription for a given resource type.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IRdfeServiceRestClient.GetResourceProviderProperties">
+            <summary>
+            Get the properties of a subscription for a given resource type.
+            </summary>
+            <returns>A key value pair enumberable containing the properties of this subscription.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IRdfeServiceRestClient.ParseCapabilities(System.String)">
+            <summary>
+            Parses the xml payload from a rdfe call response and returns a key value pair enumberable.
+            </summary>
+            <param name="payload">Xml payload from a rdfe call response.</param>
+            <returns>A key value pair enumberable containing the properties of this subscription.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.IVersionFinderClient">
+            <summary>
+            Interface to allow a user to retrieve tha available Versions for a subscription id.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.IVersionFinderClient.ListAvailableVersions">
+            <summary>
+            Lists the available Versions for a subscription id.
+            </summary>
+            <returns>Available Versions for a subscription id.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.IVersionFinderClient.ListAvailableVersions(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Parses the available Versions for a subscription id.
+            </summary>
+            <param name="capabilities">Key value pair containing Version capabilities for a subscription id.</param>
+            <returns>Available Versions for a subscription id.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.IVersionFinderClient.GetVersionStatus(System.Version)">
+            <summary>
+            Gets the status of this version as supported by the HDInsight SDK.
+            </summary>
+            <param name="hdinsightClusterVersion">HDInsight cluster version.</param>
+            <returns>The status of this version as supported by the HDInsight SDK.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.IVersionFinderClientFactory">
+            <summary>
+            Factory interface to create  a version finder client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.IVersionFinderClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Creates a version finder client instance.
+            </summary>
+            <param name="credentials">Credentials containing user subscription id.</param>
+            <param name="context">
+            The abstraction context token.
+            </param>
+            <returns>A version finder client instance.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.VersionFinder.HDInsightSDKSupportedVersions">
+            <summary>
+            Contains the minimum and maximum supported versions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.IHDInsightClientFactory">
+            <summary>
+            Factory for HDInsight.Client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.IHDInsightClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+            Creates an instance of the HDInsight.Client class.
+            </summary>
+            <param name="credentials">The credentials to use to connect to the subscription.</param>
+            <returns>Client object that can be used to interact with HDInsight clusters.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.HDInsightClientFactory">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.HDInsightClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.LocationFinder.ILocationFinderClient">
+            <summary>
+            Interface to allow a user to retrieve tha available locations for a subscription id.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.LocationFinder.ILocationFinderClient.ListAvailableLocations">
+            <summary>
+            Lists the available locations for a subscription id.
+            </summary>
+            <returns>Available locations for a subscription id.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.LocationFinder.ILocationFinderClient.ListAvailableLocations(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.String}})">
+            <summary>
+            Parses the available locations for a subscription id.
+            </summary>
+            <param name="capabilities">Key value pair containing location capabilities for a subscription id.</param>
+            <returns>Available locations for a subscription id.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.LocationFinder.ILocationFinderClientFactory">
+            <summary>
+            Factory interface to create  a Location finder client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.LocationFinder.ILocationFinderClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Creates a Location finder client instance.
+            </summary>
+            <param name="credentials">Credentials containing user subscription id.</param>
+            <param name="context">
+            A context instance that can be used to cancel the task.
+            </param>
+            <returns>A Location finder client instance.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ICloudServiceNameResolver">
+            <summary>
+            Provides a service that can resolve cloud service names.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ICloudServiceNameResolver.GetCloudServiceName(System.Guid,System.String,System.String)">
+            <summary>
+            Gets the Cloud Service Name.
+            </summary>
+            <param name="subscriptionId">
+            The subscription Id.
+            </param>
+            <param name="extensionPrefix">
+            The extension Prefix.
+            </param>
+            <param name="region">
+            The region.
+            </param>
+            <returns>
+            The Cloud Servie name.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentialsFactory">
+            <summary>
+            Connection logic.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentialsFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials)">
+            <summary>
+            Creates the connection credentials object that provides connection credentials with a token or a certificate.
+            </summary>
+            <param name="credentials">
+            The original connection credentials.
+            </param>
+            <returns>
+            The connection credentials object.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.Metastore">
+            <summary>
+            Sql Server Database that allows clusters to persist component metadata through deployments.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.Metastore.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the Metastore class.
+            </summary>
+            <param name="server">DB Server.</param>
+            <param name="database">Exclusive database name that exists in the DB Server.</param>
+            <param name="user">Valid username for the DB Server.</param>
+            <param name="password">Valid password for the DB Server.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Metastore.Server">
+            <summary>
+            Gets the server.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Metastore.Database">
+            <summary>
+            Gets the database Name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Metastore.User">
+            <summary>
+            Gets the user name.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.Metastore.Password">
+            <summary>
+            Gets the password.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterState">
+            <summary>
+            Possible states of an HDInsight cluster.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.ReadyForDeployment">
+            <summary>
+            The DNS name has been successfully validated and a Azure HostedService has been created.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.Accepted">
+            <summary>
+            A create container was received but a HostService DNS name has not been created yet.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.ClusterStorageProvisioned">
+            <summary>
+            The cluster storage is provisioned.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.AzureVMConfiguration">
+            <summary>
+            The Azure compute fabric is provisioning VM's prior to HDInsight installation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.HDInsightConfiguration">
+            <summary>
+            VM provisioning is complete and the HDInsight components are installing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.Operational">
+            <summary>
+            Greater than 90% of the nodes are operational.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.Running">
+            <summary>
+            100% of the nodes are running.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.DeletePending">
+            <summary>
+            Deployment and or Container Delete request queued.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.Deleting">
+            <summary>
+            Deployment or Container is being deleted.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.Error">
+            <summary>
+            Container is in error state.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterState.Unknown">
+            <summary>
+            Container is in unkown state.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterErrorStatus">
+            <summary>
+            Class that wraps an error status of an HDInsight Cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterErrorStatus.HttpCode">
+            <summary>
+            Gets the error code of the error status.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterErrorStatus.Message">
+            <summary>
+            Gets or sets the message detailing the error status.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterErrorStatus.OperationType">
+            <summary>
+            Gets the operation that triggered the error status.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter">
+            <summary>
+            Converts data from objects into payloads.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.May2013">
+            <summary>
+            Provides the namespace for the May2013 contracts.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.System">
+            <summary>
+            Provides the namespace for the System contracts.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.DeserializeConnectivityStatus(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.DeserializeConnectivityResponse(System.String)">
+            <summary>
+            Deserializes a Connectivity Response.
+            </summary>
+            <param name="payload">The payload.</param>
+            <returns>
+            A PayloadResponse object with the operation id for the data.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.DeserializeListContainersResult(System.String,System.String,System.Guid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.SerializeClusterCreateRequest(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.PayloadConverter.ConvertStringToVersion(System.String)">
+            <summary>
+            Converts an HDInsight version string to a Version object.
+            </summary>
+            <param name="version">
+            The version string.
+            </param>
+            <returns>
+            A version object that represents the components of the version string.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientFactory">
+            <summary>
+            A factory interface used to create new HDInsight management POCO clients.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Creates a new instance of the IHDInsightManagementPocoClient interface.
+            This interface can be used to manage an HDInsight cluster.
+            </summary>
+            <param name="credentials">
+                The credentials to use when creating the client.
+            </param>
+            <param name="context">
+            A context containing a Cancellation Token that can be used to cancel the task.
+            </param>
+            <returns>
+            A new instance of the IHDInsightManagmentPocoClient interface to be used
+            to manage a cluster.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient">
+            <summary>
+            Provides an object oriented abstraction over the HDInsight management REST client.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.RaiseClusterProvisioningEvent(System.Object,Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs)">
+            <summary>
+            Raises the cluster provisioning event.
+            </summary>
+            <param name="sender">The IHDInsightManagementPocoClient instance.</param>
+            <param name="e">EventArgs for the event.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.ListContainers">
+            <summary>
+            Lists the HDInsight containers for a subscription.
+            </summary>
+            <returns>
+            A task that can be used to retrieve a collection of HDInsight containers (clusters).
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.ListContainer(System.String)">
+            <summary>
+            Lists a single HDInsight container by name.
+            </summary>
+            <param name="dnsName">
+            The name of the HDInsight container.
+            </param>
+            <returns>
+            A task that can be used to retrieve the requested HDInsight container.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.CreateContainer(Microsoft.WindowsAzure.Management.HDInsight.ClusterCreateParameters)">
+            <summary>
+            Creates a new HDInsight container (cluster).
+            </summary>
+            <param name="details">
+            A creation object with the details of how the container should be 
+            configured.
+            </param>
+            <returns>
+            A task that can be used to wait for the creation request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.DeleteContainer(System.String)">
+            <summary>
+            Deletes an HDInsight container (cluster).
+            </summary>
+            <param name="dnsName">
+            The name of the cluster to delete.
+            </param>
+            <returns>
+            A task that can be used to wait for the delete request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.DeleteContainer(System.String,System.String)">
+            <summary>
+            Deletes an HDInsight container (cluster).
+            </summary>
+            <param name="dnsName">
+            The name of the cluster to delete.
+            </param>
+            <param name="location">
+            The location of the cluster to delete.
+            </param>
+            <returns>
+            A task that can be used to wait for the delete request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.EnableDisableProtocol(Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestUserType,Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestOperationType,System.String,System.String,System.String,System.String,System.DateTimeOffset)">
+            <summary>
+            Used to enable or disable a given protocol.
+            </summary>
+            <param name="protocol">
+            The protocol to enable or disable.
+            </param>
+            <param name="operation">
+            The operation (either enable or disable).
+            </param>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="userName">
+            The user name to use when enabling Http Connectivity.
+            </param>
+            <param name="password">
+            The password to use when enabling Http Connectivity.
+            </param>
+            <param name="expiration">
+            The expiration of the Connectivity.  This is only used for 
+            some types of protocol requests.
+            </param>
+            <returns>
+            A task that can be used to wait for the request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.EnableHttp(System.String,System.String,System.String,System.String)">
+            <summary>
+            Enables Http Connectivity on the HDInsight cluster.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="httpUserName">
+            The user name to use when enabling Http Connectivity.
+            </param>
+            <param name="httpPassword">
+            The password to use when enabling Http Connectivity.
+            </param>
+            <returns>
+            A task that can be used to wait for the request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.DisableHttp(System.String,System.String)">
+            <summary>
+            Disables Http Connectivity on the HDInsight cluster.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <returns>
+            A task that can be used to wait for the request to complete.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.IsComplete(System.String,System.String,System.Guid)">
+            <summary>
+            Queries an operation status to check whether it is complete.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="operationId">The Id of the operation to wait for.</param>
+            <returns>Returns true, if the the operation is complete.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.GetStatus(System.String,System.String,System.Guid)">
+            <summary>
+            Queries an operation status.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster.
+            </param>
+            <param name="location">
+            The location of the cluster.
+            </param>
+            <param name="operationId">The Id of the operation to wait for.</param>
+            <returns>A status object for the operation.</returns>
+        </member>
+        <member name="E:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.ClusterProvisioning">
+            <summary>
+            Event that is fired when the client provisions a cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.IHDInsightManagementPocoClient.Context">
+            <summary>
+            Gets the abstraction context.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.HDInsightManagementPocoClient.RaiseClusterProvisioningEvent(System.Object,Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioningStatusEventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="E:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.PocoClient.HDInsightManagementPocoClient.ClusterProvisioning">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClientFactory">
+            <summary>
+            Used to create instances of the IHDInsightManagementRestClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Creates a new instance of the HDInsightManagementRestClient concreate.
+            </summary>
+            <param name="credentials">
+                The credentials to use when connecting to the client.
+            </param>
+            <param name="context">
+            The abstraction context.
+            </param>
+            <returns>
+            A new instance of the client.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants">
+            <summary>
+            Provides hard coded values to ensure type safety when interacting with key static values.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants.XMsVersion">
+            <summary>
+            The X-ms-version Http Header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants.AsvXMsVersion">
+            <summary>
+            The X-ms-version Http Header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants.SchemaVersion2">
+            <summary>
+            An Http header denoting to use a different Schema version when communicating with the RDFE server.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants.XMsDate">
+            <summary>
+            The X-ms-version Http Header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants.Accept">
+            <summary>
+            The Accept Http Header.
+            </summary>
+        </member>
+        <member name="F:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.HDInsightRestConstants.UserAgent">
+            <summary>
+            The UserAgent Http Header.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClient">
+            <summary>
+            Used to send container (cluster) request to the server.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClient.ListCloudServices">
+            <summary>
+            Lists the cloud services on the client.
+            </summary>
+            <returns>
+            The response from the request.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClient.CreateContainer(System.String,System.String,System.String)">
+            <summary>
+            Creates a new cluster on the subscription.
+            </summary>
+            <param name="dnsName">
+            The DNS name of the cluster to create.
+            </param>
+            <param name="location">
+            The location of the cluster to create.
+            </param>
+            <param name="clusterPayload">
+            The creation payload with the details of the cluster to create.
+            </param>
+            <returns>
+            A task that represents the cluster creation.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClient.DeleteContainer(System.String,System.String)">
+            <summary>
+            Deletes a cluster from the subscription.
+            </summary>
+            <param name="dnsName">
+            The name of the cluster to delete.
+            </param>
+            <param name="location">
+            The location of the cluster to delete.
+            </param>
+            <returns>
+            A task that represents the cluster deletion.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClient.EnableDisableUserChangeRequest(System.String,System.String,Microsoft.WindowsAzure.Management.HDInsight.UserChangeRequestUserType,System.String)">
+            <summary>
+            Submits a request to add a http user a HdInsight cluster.  Only one http user is allowed per cluster.
+            </summary>
+            <param name="dnsName">The HdInsight cluster to update.</param>
+            <param name="location">The location of the cluster to delete.</param>
+            <param name="requestType">
+            The type of request being made.
+            </param>
+            <param name="payload">The payload.</param>
+            <returns>Task that adds a user, error if there is already a http user.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.RestClient.IHDInsightManagementRestClient.GetOperationStatus(System.String,System.String,System.Guid)">
+            <summary>
+            Gets the current status of an operation.
+            </summary>
+            <param name="dnsName">The HdInsight cluster to update.</param>
+            <param name="location">The location of the cluster to delete.</param>
+            <param name="operationId">Id of the operation.</param>
+            <returns>The current status of the Operation.</returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.InversionOfControl.SdkServiceLocationRegistrar">
+            <summary>
+            Registers services with the IOC for use by this assembly.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.InversionOfControl.SdkServiceLocationRegistrar.Register(Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocationRuntimeManager,Microsoft.WindowsAzure.Management.HDInsight.Framework.ServiceLocation.IServiceLocator)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential">
+            <summary>
+            Class that provides the credentials to submit jobs to an HDInsight cluster.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential.#ctor">
+            <summary>
+            Initializes a new instance of the JobSubmissionCertificateCredential class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential.#ctor(Microsoft.WindowsAzure.Management.HDInsight.HDInsightCertificateCredential,System.String)">
+            <summary>
+                Initializes a new instance of the JobSubmissionCertificateCredential class.
+            </summary>
+            <param name="credentials">HDInsightSubscriptionCertificateCredentials to be used.</param>
+            <param name="cluster">The cluster to connect to.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential.#ctor(System.Guid,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String)">
+            <summary>
+                Initializes a new instance of the JobSubmissionCertificateCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="certificate">Certificate to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="cluster">The cluster to connect to.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential.#ctor(System.Guid,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,System.Uri)">
+            <summary>
+                Initializes a new instance of the JobSubmissionCertificateCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="certificate">Certificate to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="cluster">The cluster to connect to.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential.#ctor(System.Guid,System.Security.Cryptography.X509Certificates.X509Certificate2,System.String,System.Uri,System.String)">
+            <summary>
+                Initializes a new instance of the JobSubmissionCertificateCredential class.
+            </summary>
+            <param name="subscriptionId">Subscription Id to be used.</param>
+            <param name="certificate">Certificate to be used to connect authenticate the user with the subscription in azure.</param>
+            <param name="cluster">The cluster to connect to.</param>
+            <param name="endPoint">Azure Enpoint for RDFE.</param>
+            <param name="deploymentNamespace">Namespace for the HDInsight service.</param>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.JobSubmissionCertificateCredential.Cluster">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.Data.JobPayloadConverter">
+            <summary>
+            Converts jobDetails payloads to and from objects as needed by the SDK.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.Data.JobPayloadConverter.DeserializeJobCreationResults(System.String)">
+            <summary>
+            Deserializes a jobDetails creation result object from a payload string.
+            </summary>
+            <param name="payload">
+            The payload.
+            </param>
+            <returns>
+            A JobCreationResults object representing the payload.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.Data.JobPayloadConverter.DeserializeJobList(System.String)">
+            <summary>
+            Deserailzies a payload into a JobList.
+            </summary>
+            <param name="payload">
+            The payload.
+            </param>
+            <returns>
+            An JobList representing the payload.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.Data.JobPayloadConverter.SerializeJobCreationDetails(Microsoft.Hadoop.Client.JobCreateParameters)">
+            <summary>
+            Serializes a jobDetails creation object into a payload that can be sent to the server by a rest client.
+            </summary>
+            <param name="job">
+            The jobDetails creation details to send to the server.
+            </param>
+            <returns>
+            A string that represents the payload.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.Data.JobPayloadConverter.DeserializeJobDetails(System.String,System.String)">
+            <summary>
+            Desterilizes the jobDetails details payload data.
+            </summary>
+            <param name="payload">
+            The payload data returned from a server.
+            </param>
+            <param name="jobId">
+            The jobId for the jobDetails requested.
+            </param>
+            <returns>
+            A new JobDetails object representing the jobDetails.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.GatewayUriResolver">
+            <summary>
+            This type generates the gateway Uri for an AzureHDInsight cluster given its DNS Name or Endpoint uri.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.GatewayUriResolver.GetGatewayUri(System.String,System.Version)">
+            <summary>
+            Gets the Gateway Uri for Http Services accessible on an Azure HDInsight cluster.
+            </summary>
+            <param name="clusterDnsNameOrEndpoint">The DNS Name or Endpoint uri of an Azure HDInsight cluster.</param>
+            <param name="version">The version of the HDInsight cluster.</param>
+            <returns>The Gateway Uri for Http Services accessible on an Azure HDInsight cluster.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.GatewayUriResolver.GetGatewayUri(System.String)">
+            <summary>
+            Gets the Gateway Uri for Http Services accessible on an Azure HDInsight cluster.
+            </summary>
+            <param name="clusterDnsNameOrEndpoint">The DNS Name or Endpoint uri of an Azure HDInsight cluster.</param>
+            <returns>The Gateway Uri for Http Services accessible on an Azure HDInsight cluster.</returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.ListJobs">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJob(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateMapReduceJob(Microsoft.Hadoop.Client.MapReduceJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateStreamingJob(Microsoft.Hadoop.Client.StreamingMapReduceJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateHiveJob(Microsoft.Hadoop.Client.HiveJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreatePigJob(Microsoft.Hadoop.Client.PigJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateSqoopJob(Microsoft.Hadoop.Client.SqoopJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.StopJob(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobOutput(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobErrorLogs(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobTaskLogSummary(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.DownloadJobTaskLogs(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.HandleClusterWaitNotifyEvent(Microsoft.Hadoop.Client.JobDetails)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.ListJobsAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateMapReduceJobAsync(Microsoft.Hadoop.Client.MapReduceJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateStreamingJobAsync(Microsoft.Hadoop.Client.StreamingMapReduceJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateHiveJobAsync(Microsoft.Hadoop.Client.HiveJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreatePigJobAsync(Microsoft.Hadoop.Client.PigJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.CreateSqoopJobAsync(Microsoft.Hadoop.Client.SqoopJobCreateParameters)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.StopJobAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobOutputAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobErrorLogsAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.GetJobTaskLogSummaryAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClient.DownloadJobTaskLogsAsync(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.HDInsightHadoopClientFactory">
+            <summary>
+            Constructs new instances of the a Hadoop client.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.IHDInsightHadoopClientFactory">
+            <summary>
+            Constructs new instances of the a Hadoop client.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionClusterDetails">
+            <summary>
+            Holds key cluster details needed in JobSubmission.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionClusterDetails.RemoteCredentials">
+            <summary>
+            Gets or sets the credentials used to connect to the cluster.
+            </summary>
+        </member>
+        <member name="P:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.JobSubmissionClusterDetails.Cluster">
+            <summary>
+            Gets or sets the details of the cluster.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient">
+            <summary>
+            The PocoClient for submitting jobs to an HDInsight server.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.IHDInsightJobSubmissionPocoClient">
+            <summary>
+            Provides POCO (Plan old C# object) representation of the HDInsight jobDetails submission rest call.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.SubmitHiveJob(Microsoft.Hadoop.Client.HiveJobCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.SubmitMapReduceJob(Microsoft.Hadoop.Client.MapReduceJobCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.ListJobs">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.GetJob(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.SubmitPigJob(Microsoft.Hadoop.Client.PigJobCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.SubmitSqoopJob(Microsoft.Hadoop.Client.SqoopJobCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.SubmitStreamingJob(Microsoft.Hadoop.Client.StreamingMapReduceJobCreateParameters)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClient.StopJob(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClientFactory">
+            <summary>
+            Used to create instances of the HDInsightJobSubmisionPocoClient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.IHDInsightJobSubmissionPocoClientFactory">
+            <summary>
+            The service used to create new instances of the HDInsightRdfeJobSubmissionPocoClient.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.PocoClient.HDInsightJobSubmissionPocoClientFactory.Create(Microsoft.Hadoop.Client.IJobSubmissionClientCredential,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.RestClient.IHDInsightJobSubmissionRestClient">
+            <summary>
+            Represents a rest call to the server.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.RestClient.IHDInsightJobSubmissionRestClient.CreateJob(System.String,System.String,System.String)">
+            <summary>
+            Creates a jobDetails on the cluster.
+            </summary>
+            <param name="containerName">
+            The container name.
+            </param>
+            <param name="location">
+            The geo location of the container.
+            </param>
+            <param name="payload">
+            The payload representing the request.
+            </param>
+            <returns>
+            A task representing the jobDetails creation.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.RestClient.IHDInsightJobSubmissionRestClient.ListJobs(System.String,System.String)">
+            <summary>
+            Lists the jobDetails on a cluster.
+            </summary>
+            <param name="containerName">
+            The container name.
+            </param>
+            <param name="location">
+            The geo location of the container.
+            </param>
+            <returns>
+            A task representing the jobDetails creation.
+            </returns>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.RestClient.IHDInsightJobSubmissionRestClient.GetJobDetail(System.String,System.String,System.String)">
+            <summary>
+            Returns jobDetails details for a given jobDetails.
+            </summary>
+            <param name="containerName">
+            The container name.
+            </param>
+            <param name="location">
+            The geo location of the container.
+            </param>
+            <param name="id">
+            The id of the jobDetails to retrieve.
+            </param>
+            <returns>
+            A task representing the jobDetails creation.
+            </returns>
+        </member>
+        <member name="T:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.RestClient.IHDInsightJobSubmissionRestClientFactory">
+            <summary>
+            The IHDInsightJobSubmissionRestClient factory interface used to create new
+            HDInsightJobSubmissionRestClient objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.WindowsAzure.Management.HDInsight.JobSubmission.RestClient.IHDInsightJobSubmissionRestClientFactory.Create(Microsoft.WindowsAzure.Management.HDInsight.IHDInsightSubscriptionCredentials,Microsoft.WindowsAzure.Management.HDInsight.IAbstractionContext)">
+            <summary>
+            Creates a new instance of an IHDInsightJobSubmissionRestClient class.
+            </summary>
+            <param name="credentials">
+                The connection credentials to use when creating the object.
+            </param>
+            <param name="context">A context containing cancellation token and logger.</param>
+            <returns>
+            A new IHDInsightJobSubmissionRestClient class.
+            </returns>
+        </member>
+    </members>
+</doc>
